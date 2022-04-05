@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="Kursach.Admin.AddEditAdministrator"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kursach.Admin"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="2" FontSize="30" FontWeight="Bold" TextAlignment="Center" Padding="20" FontFamily="Arial"><Run Name="rezhim">Изменение/Добавление</Run> администратора</TextBlock>
+            <Button BorderBrush="Transparent" Content="В меню" Margin="10 0 0 0" Cursor="Hand" FontFamily="Arial" FontSize="18" Click="Button_Click"/>
+        </Grid>
+        <Grid Grid.Row="1" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Margin="10 0 10 10" TextAlignment="Right" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial" Text="Фамилия:"/>
+            <TextBox x:Name="familia" MaxLength="30" Margin="0 0 50 10" Grid.Column="1" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" Cursor="IBeam" />
+
+            <TextBlock Margin="0 0 10 10" Grid.Row="1" VerticalAlignment="Center"  TextAlignment="Right" FontSize="18" FontFamily="Arial" Text="Имя:"/>
+            <TextBox x:Name="ima" MaxLength="30" Margin="0 0 50 10" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial" />
+
+            <TextBlock Margin="50 0 10 10" Grid.Row="2" TextAlignment="Right" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" Text="Отчество (необязат.):"/>
+            <TextBox x:Name="otchestvo" MaxLength="30" Margin="0 0 50 10" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" />
+
+            <TextBlock Margin="0 0 10 10" Grid.Row="3" TextAlignment="Right" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" Text="СНИЛС:"/>
+            <wpfx:MaskedTextBox Name="snils" Mask="000-000-000 00" Style="{StaticResource MaterialDesignTextBox}" Margin="0 0 50 10" VerticalAlignment="Center"  Grid.Row="3" Grid.Column="1" FontSize="18" FontFamily="Arial" Cursor="IBeam"/>
+
+            <TextBlock Margin="0 0 10 10" Grid.Column="2" TextAlignment="Right" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" Text="Логин:"/>
+            <TextBox Name="login" MaxLength="30" Grid.Column="3" FontSize="18" FontFamily="Arial" Margin="0 0 50 10" VerticalAlignment="Center"/>
+
+            <Button HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" FontSize="14" FontFamily="Arial" Grid.Column="2" Grid.Row="1" Click="Button_Click_3" >Сген. логин</Button>
+
+            <TextBlock Margin="0 0 10 10" Grid.Column="2" Grid.Row="2" TextAlignment="Right" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" Text="Пароль:"/>
+            <PasswordBox Name="password" MaxLength="30" Grid.Column="3" Grid.Row="2" FontSize="18" FontFamily="Arial" Margin="0 0 50 10" VerticalAlignment="Center"/>
+
+            <TextBlock Margin="0 0 10 10" Grid.Column="2" Grid.Row="3" TextAlignment="Right" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" Text="Повтор пароля:"/>
+            <PasswordBox Name="password_repeat" MaxLength="30" Grid.Column="3" Grid.Row="3" FontSize="18" FontFamily="Arial" Margin="0 0 50 10" VerticalAlignment="Center"/>
+
+            <TextBox x:Name="generated_password" IsReadOnly="True" Visibility="Hidden" Style="{StaticResource MaterialDesignComboBoxEditableTextBox}" TextAlignment="Left" Grid.Column="3" Grid.Row="4" FontSize="16" FontFamily="Arial" VerticalAlignment="Center"/>
+            <Button Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right" Margin="0 0 10 0" VerticalAlignment="Center" FontSize="14" FontFamily="Arial" Click="Button_Click_2">Сген. пароль</Button>
+
+            <Button BorderBrush="Transparent" Grid.Column="2" HorizontalAlignment="Right" Margin="0 20 10 0" Content="Отмена" Grid.Row="7" FontSize="18" FontFamily="Arial" Background="#FFFF6500" Cursor="Hand" Click="Button_Click"/>
+            <Button BorderBrush="Transparent" Grid.Column="3" HorizontalAlignment="Left" Margin="10 20 0 0" Content="Сохранить" Grid.Row="7" FontSize="18" FontFamily="Arial" Cursor="Hand" Click="Button_Click_1"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Kursach.AdminControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kursach"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Name="content">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="5" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button BorderBrush="Transparent" Cursor="Hand" Height="50" Width="50" Margin="20" Click="Button_Click_6">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/exit.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock VerticalAlignment="Center" Grid.Column="1" FontSize="30" FontWeight="Bold" TextAlignment="Center" Padding="20" FontFamily="Arial" Text="Администратор системы тестирования учащихся"/>
+            <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Margin="0 10 0 0" MinHeight="50" BorderBrush="Transparent" Click="Button_Click_5">
+                    <Button.Background>
+                        <ImageBrush x:Name="f1" ImageSource="pack://application:,,,/Assets/profile.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <TextBlock Padding="2" TextWrapping="Wrap" TextAlignment="Center"><Run Name="familia">Жигулёвский</Run><Run Text=" "></Run><Run Name="ima">Иван</Run></TextBlock>
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="1" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click">
+                <Button.Background>
+                    <ImageBrush x:Name="f2" ImageSource="../Assets/prepodavatel.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Преподаватели" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_4">
+                <Button.Background>
+                    <ImageBrush x:Name="f3" ImageSource="pack://application:,,,/Assets/uchenik.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Контингент" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="2" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_2">
+                <Button.Background>
+                    <ImageBrush x:Name="f4" ImageSource="pack://application:,,,/Assets/grupi.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Классы/Группы" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="3" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_3">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/discipili.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Дисциплины" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="4" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_1">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/klassi.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Параллели" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_7">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/Administrators.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Администраторы" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_8">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/export.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Экспорт данных" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_9">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/import.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Импорт данных" FontFamily="Arial"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="3" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button BorderBrush="Transparent" MinHeight="150" MinWidth="150" MaxWidth="100" Cursor="Hand" Click="Button_Click_10">
+                <Button.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/Assets/uchgod.png" Stretch="Uniform"/>
+                </Button.Background>
+            </Button>
+            <TextBlock FontSize="18" TextAlignment="Center" Margin="0 10 0 0" Text="Периоды обучения" FontFamily="Arial"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

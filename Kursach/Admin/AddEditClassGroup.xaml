@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Kursach.Admin.AddEditClassGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kursach.Admin"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="2" FontSize="30" FontWeight="Bold" TextAlignment="Center" Padding="20" FontFamily="Arial"><Run Name="rezhim">Изменение/Добавление</Run> <Run Name="rezhim_2">Класса/Группы</Run></TextBlock>
+            <Button BorderBrush="Transparent" Content="В меню" Margin="10 0 0 0" Cursor="Hand" FontFamily="Arial" FontSize="18" Click="Button_Click"/>
+        </Grid>
+        <Grid Grid.Row="1" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Margin="10 0 10 10" TextAlignment="Right" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial" Text="Тип:"/>
+            <TextBlock x:Name="tip" Margin="0 0 50 10" Grid.Column="1" TextAlignment="Left" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial" Text="группа"/>
+
+            <TextBlock Margin="0 0 10 10" Grid.Row="1" VerticalAlignment="Center"  TextAlignment="Right" FontSize="18" FontFamily="Arial" Text="Выберите параллель:"/>
+            <ComboBox SelectionChanged="nomer_paralleli_SelectionChanged" Name="parallel_cb" SelectedValuePath="ID_Parallel" DisplayMemberPath="ParallelName" Text="" Width="150" HorizontalAlignment="Left" Margin="0 0 50 10" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial" />
+
+            <TextBlock Margin="0 0 10 30" Grid.Row="2" VerticalAlignment="Center"  TextAlignment="Right" FontSize="18" FontFamily="Arial">Введите наименование <Run Name="grup_or_class">класса/группы</Run></TextBlock>
+            <TextBox SelectionChanged="nomer_paralleli_SelectionChanged" MaxLength="15" x:Name="nomer_paralleli" Width="150" HorizontalAlignment="Left" Margin="0 0 50 30" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial" Cursor="IBeam" />
+
+            <TextBlock Margin="0 0 10 100" Grid.Row="3" TextAlignment="Right" VerticalAlignment="Center" FontSize="18" FontFamily="Arial" Text="Пример вывода:"/>
+            <TextBlock x:Name="example" Margin="0 0 50 100" Grid.Column="1" Grid.Row="3" TextAlignment="Left" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial"></TextBlock>
+
+            <TextBlock x:Name="gr" Visibility="Hidden" Margin="10 0 100 0" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" TextAlignment="Left" VerticalAlignment="Center"  FontSize="18" FontFamily="Arial">Учащиеся</TextBlock>
+            <ListView SelectionChanged="listbox_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Auto" Name="listbox" Visibility="Hidden" SelectedValuePath="ID_Student" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="1"  Margin="220 0 30 0" Grid.RowSpan="2" FontFamily="Arial" FontSize="16">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock FontWeight="Bold" Grid.Column="0" VerticalAlignment="Center">
+                                <TextBlock.Text>
+                                    <Binding Path="FIO"/>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button BorderBrush="Transparent" Grid.Column="1" HorizontalAlignment="Left" Margin="20 0 10 0" Content="Отмена" Grid.Row="7" FontSize="18" FontFamily="Arial" Background="#FFFF6500" Cursor="Hand" Click="Button_Click"/>
+            <Button BorderBrush="Transparent" Grid.Column="0" HorizontalAlignment="Right" Margin="10 0 20 0" Content="Сохранить" Grid.Row="7" FontSize="18" FontFamily="Arial" Click="Button_Click_1" Cursor="Hand"/>
+        </Grid>
+    </Grid>
+</UserControl>

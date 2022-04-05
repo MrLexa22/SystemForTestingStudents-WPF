@@ -1,0 +1,40 @@
+﻿<Window x:Class="Kursach.Admin.ImportElemetns.ImportErrors"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursach.Admin.ImportElemetns"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="ImportErrors" MinHeight="350" Height="350" Width="600" MinWidth="600">
+    <Grid>
+        <DataGrid SelectedValuePath="ID_Student" HeadersVisibility="Column" Grid.Column="1" Grid.Row="1" Margin="15" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="data_grid" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Фамилия Имя" Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock VerticalAlignment="Center" Margin="5" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" TextWrapping="Wrap" Text="{Binding FIO}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Логин" Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock VerticalAlignment="Center" Margin="5" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" TextWrapping="Wrap" Text="{Binding login}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Ошибка" Width="1*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock VerticalAlignment="Center" Margin="5" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" TextWrapping="Wrap" Text="{Binding reason}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

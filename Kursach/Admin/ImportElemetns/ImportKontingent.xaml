@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="Kursach.Admin.ImportElemetns.ImportKontingent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kursach.Admin.ImportElemetns"
+             mc:Ignorable="d" 
+              d:DesignHeight="450" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.ColumnSpan="3" FontSize="18" Margin="20 10 0 10">Импорт учащихся</TextBlock>
+        <Grid Margin="10" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Margin="0 20 0 0" Grid.Row="1" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="14" TextAlignment="Center" Text="Ресурсы:"></TextBlock>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}" Foreground="#DDFF6500" Click="Button_Click_1">Скачать пример</Button>
+                    <Button Grid.Row="1" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}" Foreground="#DDFF6500" Click="Button_Click_2">Скачать для заполнения</Button>
+                    <Button Grid.Row="2" Margin="8" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}" Foreground="#DDFF6500" Click="Button_Click">Краткая инструкция</Button>
+                </Grid>
+            </Grid>
+            <StackPanel Margin="10" Grid.Row="2" VerticalAlignment="Center">
+                <TextBlock TextWrapping="Wrap" FontSize="14" Text="Выберите файл:"></TextBlock>
+                <Grid Margin="0 5 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Click="Button_Click_3" Cursor="Hand">Выбрать файл</Button>
+                    <TextBox VerticalAlignment="Center" IsReadOnly="True" Name="filename" Margin="0 0 20 0"></TextBox>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1" Name="grid1" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock TextAlignment="Center" FontSize="18" Margin="5" Foreground="Green">Успешно добавленные в систему</TextBlock>
+            <DataGrid SelectedValuePath="ID_Student" HeadersVisibility="Column" Grid.Column="1" Grid.Row="1" Margin="5" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="yes_datagrid" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Фамилия Имя" Width="1*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock VerticalAlignment="Center" Margin="5" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" TextWrapping="Wrap"><Run Text="{Binding Familia}"></Run><Run Text=" "></Run><Run Text="{Binding Ima}"></Run></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Логин" Width="1*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock VerticalAlignment="Center" Margin="5" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" TextWrapping="Wrap" Text="{Binding Login}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Column="2" Grid.Row="1" Name="grid2" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock TextAlignment="Center" FontSize="18" Margin="5" Foreground="Red">Не удалось занести данные</TextBlock>
+            <DataGrid SelectedValuePath="ID_Student" HeadersVisibility="Column" Grid.Column="1" Grid.Row="1" Margin="5" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="no_datagrid" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Фамилия Имя" Width="1*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock VerticalAlignment="Center" Margin="5" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" TextWrapping="Wrap"><Run Text="{Binding Familia}"></Run><Run Text=" "></Run><Run Text="{Binding Ima}"></Run></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Логин" Width="1*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock VerticalAlignment="Center" Margin="5" TextAlignment="Center" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14" TextWrapping="Wrap" Text="{Binding Login}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Visibility="Hidden" x:Name="btn_reasons" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 10 20 10" Cursor="Hand" Background="#FFFF5300" Click="btn_reasons_Click">Просмотреть ошибки</Button>
+            <Button Click="btn_notpass_Click" Visibility="Hidden" x:Name="btn_notpass" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 10 20 10" Cursor="Hand" Background="#FFFFD400">Экспорт не загруженных</Button>
+            <Button IsEnabled="False" x:Name="btn_exp" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 10 20 10" Cursor="Hand" Click="btn_exp_Click">Импортировать</Button>
+        </Grid>
+    </Grid>
+</UserControl>

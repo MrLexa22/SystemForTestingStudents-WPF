@@ -1,0 +1,14 @@
+﻿<Window x:Class="Kursach.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursach"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Тестировочное приложение" MinHeight="600" MinWidth="950"  Height="600" Width="1000">
+    <Grid Background="#ffdadada">
+        <ContentControl x:Name="control"/>
+        <ContentControl x:Name="control2"/>
+    </Grid>
+</Window>

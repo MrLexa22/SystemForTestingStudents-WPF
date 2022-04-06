@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,13 +69,19 @@ namespace Kursach.Prepodavatel
                 disciplins.SelectedValue = b2[0].Disciplini_ID;
                 if(nomer_vopros.Text == "1" && spisok_vopsov.Items.Count <= 0)
                     btn_delete_vopros.Visibility = Visibility.Hidden;
-                VoprosTableAdapter aa = new VoprosTableAdapter();
-                DataBase.VoprosDataTable bb = new DataBase.VoprosDataTable();
-                aa.FillByIDTest(bb, Convert.ToInt32(ID_Tes));
-                for(int i = 0; i<bb.Rows.Count;i++)
-                    voprosi.Add(new ModelListVoprosov { IdVopros = bb[i].ID_Vopros, NomerVoprosa = (i + 1).ToString() });
-                nomer_vopros.Text = (voprosi.Count+1).ToString();
+                list_voprosi_update();
             }
+        }
+
+        public void list_voprosi_update()
+        {
+            voprosi.Clear();
+            VoprosTableAdapter aa = new VoprosTableAdapter();
+            DataBase.VoprosDataTable bb = new DataBase.VoprosDataTable();
+            aa.FillByIDTest(bb, Convert.ToInt32(ID_Tes));
+            for (int i = 0; i < bb.Rows.Count; i++)
+                voprosi.Add(new ModelListVoprosov { IdVopros = bb[i].ID_Vopros, NomerVoprosa = (i + 1).ToString() });
+            nomer_vopros.Text = (voprosi.Count + 1).ToString();
         }
         public class ModelVoros_tip1 : INotifyPropertyChanged
         {
@@ -154,19 +161,42 @@ namespace Kursach.Prepodavatel
 
         private void Tip_voprosa_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (tip_voprosa.SelectedIndex == 0)
+            tip_1.Visibility = Visibility.Hidden;
+            tip_2.Visibility = Visibility.Hidden;
+            tip_1.ItemsSource = null;
+            tip_2.ItemsSource = null;
+            grid_tip_1.Visibility = Visibility.Hidden;
+            if (tip_voprosa.SelectedIndex == 0 || tip_voprosa.SelectedIndex == 1)
             {
                 grid_tip_1.Visibility = Visibility.Visible;
-                tip1_list = new ObservableCollection<ModelVoros_tip1>();
-                ModelVoros_tip1 tip = new ModelVoros_tip1();
-                tip.NameVopros = "";
-                tip.IsChecked = false;
-                tip1_list.Add(tip);
-                tip = new ModelVoros_tip1();
-                tip.NameVopros = "";
-                tip.IsChecked = true;
-                tip1_list.Add(tip);
-                tip_1.ItemsSource = tip1_list;
+                if (tip_voprosa.SelectedIndex == 0)
+                {
+                    for (int i = 0; i < tip1_list.Count; i++)
+                        tip1_list[i].IsChecked = false;
+                    tip_1.ItemsSource = null;
+                    tip_1.ItemsSource = tip1_list;
+                    tip_1.Visibility = Visibility.Visible;
+                }
+                if (tip_voprosa.SelectedIndex == 1)
+                {
+                    for (int i = 0; i < tip1_list.Count; i++)
+                        tip1_list[i].IsChecked = false;
+                    tip_2.ItemsSource = null;
+                    tip_2.ItemsSource = tip1_list;
+                    tip_2.Visibility = Visibility.Visible;
+                }
+                if ((tip1_list.Count == 2 && (tip1_list[0].NameVopros.Trim() == "" && tip1_list[1].NameVopros.Trim() == "")) || tip1_list.Count == 0)
+                {
+                    tip1_list.Clear();
+                    ModelVoros_tip1 tip = new ModelVoros_tip1();
+                    tip.NameVopros = "";
+                    tip.IsChecked = false;
+                    tip1_list.Add(tip);
+                    tip = new ModelVoros_tip1();
+                    tip.NameVopros = "";
+                    tip.IsChecked = true;
+                    tip1_list.Add(tip);
+                }
             }
         }
 
@@ -231,7 +261,7 @@ namespace Kursach.Prepodavatel
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            if (tip_voprosa.SelectedIndex == 0)
+            if (tip_voprosa.SelectedIndex == 0 || tip_voprosa.SelectedIndex == 1)
             {
                 if(tip1_list.Count >= 8)
                 {
@@ -242,28 +272,46 @@ namespace Kursach.Prepodavatel
                 tip.NameVopros = "";
                 tip.IsChecked = false;
                 tip1_list.Add(tip);
-                tip_1.ItemsSource = tip1_list;
             }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            if(tip1_list.Count <= 2)
+            if (tip_voprosa.SelectedIndex == 0)
             {
-                MessageBox.Show("Минимальное количество вариантов ответа - 2!");
-                return;
+                var customer = tip_1.SelectedItem as ModelVoros_tip1;
+                //MessageBox.Show(customer.NameVopros + " " + customer.IsChecked.ToString());
+                if (tip1_list.Count <= 2)
+                {
+                    MessageBox.Show("Минимальное количество вариантов ответа - 2!");
+                    return;
+                }
+                tip1_list.Remove(customer);
             }
-            var customer = tip_1.SelectedItem as ModelVoros_tip1;
-            tip1_list.Remove(customer);
+            if(tip_voprosa.SelectedIndex == 1)
+            {
+                var customer = tip_2.SelectedItem as ModelVoros_tip1;
+                //MessageBox.Show(customer.NameVopros + " " + customer.IsChecked.ToString());
+                if (tip1_list.Count <= 2)
+                {
+                    MessageBox.Show("Минимальное количество вариантов ответа - 2!");
+                    return;
+                }
+                tip1_list.Remove(customer);
+            }
         }
 
         public void clearVopros()
         {
             tip1_list.Clear();
+            ID_Vopros = 0;
             name_vopros.Text = "";
             tip_voprosa.SelectedIndex = -1;
             balli.Text = "";
             nomer_vopros.Text = (voprosi.Count + 1).ToString();
+            add_vopros_btn.Visibility = Visibility.Visible;
+            edit_vopros_btn.Visibility = Visibility.Hidden;
+            btn_delete_vopros.Visibility = Visibility.Hidden;
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -293,7 +341,7 @@ namespace Kursach.Prepodavatel
                 MessageBox.Show("Необходимо выбрать тип вопроса!");
                 return;
             }
-            if(tip_voprosa.SelectedIndex == 0)
+            if(tip_voprosa.SelectedIndex == 0 || tip_voprosa.SelectedIndex == 1)
             {
                 if(tip1_list.Where(s=>s.IsChecked == true).Count() < 1)
                 {
@@ -315,7 +363,7 @@ namespace Kursach.Prepodavatel
                     MessageBox.Show("Такой вопрос уже существуе в данном тесте");
                     return;
                 }
-                a.InsertQuery(name_vopros.Text, Convert.ToInt32(ID_Tes), "0", Convert.ToInt32(balli.Text));
+                a.InsertQuery(name_vopros.Text, Convert.ToInt32(ID_Tes), tip_voprosa.SelectedIndex.ToString(), Convert.ToInt32(balli.Text));
                 DataBase.VoprosDataTable b = new DataBase.VoprosDataTable();
                 a.FillByNameVoprosIDTest(b, Convert.ToInt32(ID_Tes), name_vopros.Text);
                 AnswerTableAdapter a1 = new AnswerTableAdapter();
@@ -326,9 +374,86 @@ namespace Kursach.Prepodavatel
             }
         }
 
+        public int ID_Vopros = 0;
         private void edit_vopros_btn_Click(object sender, RoutedEventArgs e)
         {
+            if (tip_voprosa.SelectedIndex == 0 || tip_voprosa.SelectedIndex == 1)
+            {
+                if (tip1_list.Where(s => s.IsChecked == true).Count() < 1)
+                {
+                    MessageBox.Show("Необходимо выбрать хотя бы один правильный вариант ответа!");
+                    return;
+                }
+                for (int i = 0; i < tip1_list.Count; i++)
+                {
+                    tip1_list[i].NameVopros = tip1_list[i].NameVopros.Trim();
+                    if (tip1_list[i].NameVopros.Length < 1)
+                    {
+                        MessageBox.Show("Вариант ответа №" + (i + 1) + " заполнено некорректно!");
+                        return;
+                    }
+                }
+                VoprosTableAdapter a = new VoprosTableAdapter();
+                if (a.FindVoprosEdit(Convert.ToInt32(ID_Tes), name_vopros.Text, ID_Vopros) > 0)
+                {
+                    MessageBox.Show("Такой вопрос уже существуе в данном тесте");
+                    return;
+                }
+                a.UpdateQuery(name_vopros.Text, Convert.ToInt32(ID_Tes), tip_voprosa.SelectedIndex.ToString(), Convert.ToInt32(balli.Text),ID_Vopros);
+                AnswerTableAdapter a1 = new AnswerTableAdapter();
+                a1.DeleteQueryByVoprosID(ID_Vopros);
+                for (int i = 0; i < tip1_list.Count; i++)
+                    a1.InsertQuery(tip1_list[i].NameVopros, tip1_list[i].IsChecked, ID_Vopros);
+                clearVopros();
+            }
+        }
 
+        private void spisok_vopsov_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (spisok_vopsov.SelectedValue == null)
+                return;
+            clearVopros();
+            var customer = spisok_vopsov.SelectedItem as ModelListVoprosov;
+            VoprosTableAdapter a = new VoprosTableAdapter();
+            DataBase.VoprosDataTable b = new DataBase.VoprosDataTable();
+            a.FillByID(b, Convert.ToInt32(spisok_vopsov.SelectedValue));
+            name_vopros.Text = b[0].NameVopros;
+            tip_voprosa.SelectedIndex = Convert.ToInt16(b[0].TypeVopros);
+            balli.Text = b[0].Ball.ToString();
+            nomer_vopros.Text = customer.NomerVoprosa;
+
+            AnswerTableAdapter a1 = new AnswerTableAdapter();
+            DataBase.AnswerDataTable b1 = new DataBase.AnswerDataTable();
+            a1.FillByIDVopros(b1, b[0].ID_Vopros);
+
+            if(Convert.ToInt16(b[0].TypeVopros) == 0 || Convert.ToInt16(b[0].TypeVopros) == 1)
+            {
+                tip1_list.Clear();
+                for (int i = 0; i < b1.Rows.Count; i++)
+                    tip1_list.Add(new ModelVoros_tip1 { IsChecked = b1[i].IsTrue, NameVopros = b1[i].TextAnswer });
+            }
+
+            add_vopros_btn.Visibility = Visibility.Hidden;
+            edit_vopros_btn.Visibility = Visibility.Visible;
+            btn_delete_vopros.Visibility = Visibility.Visible;
+            ID_Vopros = b[0].ID_Vopros;
+            spisok_vopsov.UnselectAll();
+        }
+
+        private void btn_delete_vopros_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что желаете удалить данный вопрос?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                VoprosTableAdapter a = new VoprosTableAdapter();
+                a.DeleteQuery(ID_Vopros);
+                list_voprosi_update();
+                clearVopros();
+            }
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            clearVopros();
         }
     }
 }

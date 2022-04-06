@@ -74,7 +74,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Row="2" Name="grid2" Visibility="Visible">
+        <Grid Grid.Row="2" Name="grid2" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="0.45*"></ColumnDefinition>
@@ -84,9 +84,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Click="Button_Click_4" Cursor="Hand" Margin="10">Сохранить вопрос</Button>
+                <Button x:Name="add_vopros_btn" Click="Button_Click_4" Cursor="Hand" Margin="10">Сохранить вопрос</Button>
                 <Button x:Name="edit_vopros_btn" Click="edit_vopros_btn_Click" Visibility="Hidden" Cursor="Hand" Margin="10">Сохранить вопрос</Button>
-                <Button x:Name="btn_delete_vopros" Grid.Row="1" Margin="10">Удалить вопрос</Button>
+                <Button x:Name="btn_delete_vopros" Click="btn_delete_vopros_Click" Grid.Row="1" Margin="10">Удалить вопрос</Button>
             </Grid>
             <Grid Grid.Column="0" Margin="10 0 0 0">
                 <Grid.RowDefinitions>
@@ -111,7 +111,7 @@
                 </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Row="3" Margin="10 0 0 0" Name="grid3" Visibility="Visible">
+        <Grid Grid.Row="3" Margin="10 0 0 0" Name="grid3" Visibility="Hidden">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -123,7 +123,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock FontFamily="Arial" FontSize="22" Margin="20 10 20 10">Список вопросов</TextBlock>
-                <ListBox SelectedValuePath="IdVopros" Grid.Row="1" Name="spisok_vopsov" Background="Aquamarine">
+                <ListBox SelectionChanged="spisok_vopsov_SelectionChanged" SelectedValuePath="IdVopros" Grid.Row="1" Name="spisok_vopsov" Background="Aquamarine">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -133,19 +133,19 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Grid.Row="2" HorizontalAlignment="Center" Margin="5">Создать вопрос</Button>
+                <Button Click="Button_Click_5" Grid.Row="2" HorizontalAlignment="Center" Margin="5">Создать вопрос</Button>
             </Grid>
             <Grid Grid.Column="1" Name="grid_tip_1" Visibility="Hidden">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition ></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button Click="Button_Click_2" HorizontalAlignment="Left" BorderBrush="Transparent" Cursor="Hand" Margin="0 0 10 0">
+                <Button Click="Button_Click_2" HorizontalAlignment="Left" BorderBrush="Transparent" Cursor="Hand" Margin="20 10 10 0">
                     <Button.Background>
                         <ImageBrush ImageSource="pack://application:,,,/Assets/add.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <DataGrid HeadersVisibility="None" Grid.Row="1" Margin="10 10 10 0" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="tip_1" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+                <DataGrid Visibility="Hidden" HeadersVisibility="None" Grid.Row="1" Margin="10 10 10 0" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="tip_1" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
                     <DataGrid.Resources>
                         <ResourceDictionary>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
@@ -183,6 +183,56 @@
                                             <ColumnDefinition Width="Auto"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <RadioButton GroupName="group_1" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <TextBox Margin="10 0 10 0" MaxLength="80" VerticalAlignment="Center" FontFamily="Arial" FontSize="16" Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding NameVopros, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                                        <Button Click="Button_Click_3" Grid.Column="2" BorderBrush="Transparent" Cursor="Hand" VerticalAlignment="Center">
+                                            <Button.Background>
+                                                <ImageBrush ImageSource="pack://application:,,,/Assets/close.png" Stretch="Uniform"/>
+                                            </Button.Background>
+                                        </Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid Visibility="Hidden" HeadersVisibility="None" Grid.Row="1" Margin="10 10 10 0" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="tip_2" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+                    <DataGrid.Resources>
+                        <ResourceDictionary>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                            <Style x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Background" Value="{x:Null}" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{x:Null}" />
+                                        <Setter Property="BorderBrush" Value="{x:Null}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="Background" Value="{x:Null}" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="{x:Null}" />
+                                        <Setter Property="BorderBrush" Value="{x:Null}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ResourceDictionary>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Название теста" Width="1*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="10 8 10 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <CheckBox IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                         <TextBox Margin="10 0 10 0" MaxLength="80" VerticalAlignment="Center" FontFamily="Arial" FontSize="16" Grid.Column="1" HorizontalAlignment="Stretch" Text="{Binding NameVopros, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
                                         <Button Click="Button_Click_3" Grid.Column="2" BorderBrush="Transparent" Cursor="Hand" VerticalAlignment="Center">
                                             <Button.Background>

@@ -17,6 +17,7 @@
     <None Remove="Assets\edit.png" />
     <None Remove="Assets\exit.png" />
     <None Remove="Assets\export.png" />
+    <None Remove="Assets\grade.png" />
     <None Remove="Assets\grupi.png" />
     <None Remove="Assets\import.png" />
     <None Remove="Assets\klassi.png" />
@@ -24,6 +25,10 @@
     <None Remove="Assets\prepodavatel1.png" />
     <None Remove="Assets\profile.png" />
     <None Remove="Assets\propodavatel.png" />
+    <None Remove="Assets\ShapkaCourse.png" />
+    <None Remove="Assets\TestLogo-ch.png" />
+    <None Remove="Assets\TestLogo.png" />
+    <None Remove="Assets\Tochki.png" />
     <None Remove="Assets\uchenik.png" />
     <None Remove="Assets\uchgod.png" />
     <None Remove="DataBase.edmx" />
@@ -64,6 +69,9 @@
     <Resource Include="Assets\export.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\grade.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\grupi.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -80,6 +88,18 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\profile.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\ShapkaCourse.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\TestLogo-ch.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\TestLogo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Tochki.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\uchenik.png">

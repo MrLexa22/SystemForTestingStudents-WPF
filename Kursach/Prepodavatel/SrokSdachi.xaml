@@ -1,0 +1,34 @@
+﻿<Window x:Class="Kursach.Prepodavatel.SrokSdachi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursach.Prepodavatel" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Срок выполнения" Height="180" Width="300" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Margin="10 10 10 10" FontSize="16">Введите срок выполнения теста:</TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <DatePicker Name="date" materialDesign:HintAssist.Hint="Дата" FontSize="16" FontFamily="Arial" Margin="10 0 10 0" VerticalAlignment="Center" FirstDayOfWeek="Monday"></DatePicker>
+            <xctk:DateTimeUpDown x:Name="time" materialDesign:HintAssist.Hint="Время" VerticalAlignment="Center" Margin="10 0 10 0" FontSize="16" FontFamily="Arial" TextAlignment="Left" Grid.Column = "1" Text="08:00"  Format="ShortTime" FormatString="hh:mm" CultureInfo="ru-RU"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button HorizontalAlignment="Center" Click="Button_Click">Сохранить</Button>
+            <Button Grid.Column="1" HorizontalAlignment="Center" Click="Button_Click_1">Отмена</Button>
+        </Grid>
+    </Grid>
+</Window>

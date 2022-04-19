@@ -46,7 +46,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Name="btn_create" Cursor="Hand" Margin="10" HorizontalAlignment="Center" FontSize="16" Click="Button_Click_1">Создать тест</Button>
-                    <Button Name="btn_publish" Visibility="Hidden" Cursor="Hand" Margin="0 0 20 0" Grid.Column="1" HorizontalAlignment="Center" FontSize="16">
+                    <Button Click="btn_publish_Click" Name="btn_publish" Visibility="Hidden" Cursor="Hand" Margin="0 0 20 0" Grid.Column="1" HorizontalAlignment="Center" FontSize="16">
                         <TextBlock TextWrapping="Wrap">Опубликовать тест</TextBlock>
                     </Button>
                 </Grid>
@@ -62,7 +62,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock FontFamily="Arial" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 10 10">Группа/Класс:</TextBlock>
-                    <ComboBox Name="classes" SelectedValuePath="ID_Class" DisplayMemberPath="GroupName" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="0 0 20 0"></ComboBox>
+                    <ComboBox IsEnabled="False" Name="classes" SelectedValuePath="ID_Class" DisplayMemberPath="GroupName" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="0 0 20 0"></ComboBox>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -70,7 +70,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock FontFamily="Arial" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 10 10">Дисциплина:</TextBlock>
-                    <ComboBox Name="disciplins" SelectedValuePath="ID_Disciplina" DisplayMemberPath="ShortName" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="0 0 20 0"></ComboBox>
+                    <ComboBox IsEnabled="False" Name="disciplins" SelectedValuePath="ID_Disciplina" DisplayMemberPath="ShortName" Grid.Column="1" FontSize="18" VerticalAlignment="Center" Margin="0 0 20 0"></ComboBox>
                 </Grid>
             </Grid>
         </Grid>
@@ -123,7 +123,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock FontFamily="Arial" FontSize="22" Margin="20 10 20 10">Список вопросов</TextBlock>
-                <ListBox SelectionChanged="spisok_vopsov_SelectionChanged" SelectedValuePath="IdVopros" Grid.Row="1" Name="spisok_vopsov" Background="Aquamarine">
+                <ListBox SelectionChanged="spisok_vopsov_SelectionChanged" SelectedValuePath="IdVopros" Grid.Row="1" Name="spisok_vopsov" Background="Silver">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -245,6 +245,9 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+            </Grid>
+            <Grid  Grid.Column="1" Name="grid_tip_3" Visibility="Hidden">
+                <TextBox FontFamily="Arial" FontSize="16" x:Name="answer_text" Margin="0 20" MaxWidth="500" MaxLength="30" VerticalAlignment="Top"  materialDesign:HintAssist.Hint="Введите текст ответа"></TextBox>
             </Grid>
         </Grid>
     </Grid>

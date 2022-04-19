@@ -42,6 +42,7 @@ namespace Kursach
         public static ContentControl fram;
         public static string auth_login;
         public static ContentControl fram_prep;
+        public static DateTime DateTimeTest;
         public static void ClearUsers()
         {
             UsersTableAdapter a = new UsersTableAdapter();

@@ -26,9 +26,11 @@ namespace Kursach.Prepodavatel
     public partial class CreateTest : UserControl
     {
         public string ID_Tes = "";
-        public CreateTest(string id_test)
+        public int ID_Dicp = 0;
+        public CreateTest(string id_test, int ID_Disciplina)
         {
             InitializeComponent();
+            ID_Dicp = ID_Disciplina;
             tip_voprosa.Items.Add("Один вариант ответа");
             tip_voprosa.Items.Add("Несколько вариантов ответа");
             tip_voprosa.Items.Add("Краткий текст. вариант ответа");
@@ -71,6 +73,12 @@ namespace Kursach.Prepodavatel
                     btn_delete_vopros.Visibility = Visibility.Hidden;
                 list_voprosi_update();
             }
+
+            DiscipliniTablePrepodavatelTableAdapter a12 = new DiscipliniTablePrepodavatelTableAdapter();
+            DataBase.DiscipliniTablePrepodavatelDataTable b12 = new DataBase.DiscipliniTablePrepodavatelDataTable();
+            a12.FillByIDDiscipl(b12, ID_Disciplina);
+            classes.SelectedValue = b12[0].ID_Class;
+            disciplins.SelectedValue = b12[0].ID_Disciplina;
         }
 
         public void list_voprosi_update()
@@ -166,6 +174,8 @@ namespace Kursach.Prepodavatel
             tip_1.ItemsSource = null;
             tip_2.ItemsSource = null;
             grid_tip_1.Visibility = Visibility.Hidden;
+            grid_tip_3.Visibility = Visibility.Hidden;
+            answer_text.Text = "";
             if (tip_voprosa.SelectedIndex == 0 || tip_voprosa.SelectedIndex == 1)
             {
                 grid_tip_1.Visibility = Visibility.Visible;
@@ -198,6 +208,10 @@ namespace Kursach.Prepodavatel
                     tip1_list.Add(tip);
                 }
             }
+            if (tip_voprosa.SelectedIndex == 2)
+            {
+                grid_tip_3.Visibility = Visibility.Visible;
+            }
         }
 
         private void Disciplins_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -215,10 +229,11 @@ namespace Kursach.Prepodavatel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(ID_Tes == null)
-                Controllers.fram_prep.Content = new UpravlenieTests();
-            else
-                Controllers.fram_prep.Content = new Chernoviki();
+            Controllers.fram_prep.Content = new Lenta(ID_Dicp);
+            /*            if(ID_Tes == null)
+                            Controllers.fram_prep.Content = new UpravlenieTests();
+                        else
+                            Controllers.fram_prep.Content = new Chernoviki();*/
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -308,6 +323,7 @@ namespace Kursach.Prepodavatel
             name_vopros.Text = "";
             tip_voprosa.SelectedIndex = -1;
             balli.Text = "";
+            answer_text.Text = "";
             nomer_vopros.Text = (voprosi.Count + 1).ToString();
             add_vopros_btn.Visibility = Visibility.Visible;
             edit_vopros_btn.Visibility = Visibility.Hidden;
@@ -372,6 +388,29 @@ namespace Kursach.Prepodavatel
                 voprosi.Add(new ModelListVoprosov { IdVopros = b[0].ID_Vopros, NomerVoprosa = (voprosi.Count + 1).ToString() });
                 clearVopros();
             }
+            if(tip_voprosa.SelectedIndex == 2)
+            {
+                answer_text.Text = answer_text.Text.Trim();
+                if(answer_text.Text.Length < 1)
+                {
+                    MessageBox.Show("Заполните корректно поле ответа");
+                    return;
+                }
+                VoprosTableAdapter a = new VoprosTableAdapter();
+                if (a.FindExistVopros(Convert.ToInt32(ID_Tes), name_vopros.Text) > 0)
+                {
+                    MessageBox.Show("Такой вопрос уже существуе в данном тесте");
+                    return;
+                }
+
+                a.InsertQuery(name_vopros.Text, Convert.ToInt32(ID_Tes), tip_voprosa.SelectedIndex.ToString(), Convert.ToInt32(balli.Text));
+                DataBase.VoprosDataTable b = new DataBase.VoprosDataTable();
+                a.FillByNameVoprosIDTest(b, Convert.ToInt32(ID_Tes), name_vopros.Text);
+                AnswerTableAdapter a1 = new AnswerTableAdapter();
+                a1.InsertQuery(answer_text.Text, true, b[0].ID_Vopros);
+                voprosi.Add(new ModelListVoprosov { IdVopros = b[0].ID_Vopros, NomerVoprosa = (voprosi.Count + 1).ToString() });
+                clearVopros();
+            }
         }
 
         public int ID_Vopros = 0;
@@ -406,6 +445,26 @@ namespace Kursach.Prepodavatel
                     a1.InsertQuery(tip1_list[i].NameVopros, tip1_list[i].IsChecked, ID_Vopros);
                 clearVopros();
             }
+            if(tip_voprosa.SelectedIndex == 2)
+            {
+                answer_text.Text = answer_text.Text.Trim();
+                if (answer_text.Text.Length < 1)
+                {
+                    MessageBox.Show("Заполните корректно поле ответа");
+                    return;
+                }
+                VoprosTableAdapter a = new VoprosTableAdapter();
+                if (a.FindVoprosEdit(Convert.ToInt32(ID_Tes), name_vopros.Text, ID_Vopros) > 0)
+                {
+                    MessageBox.Show("Такой вопрос уже существуе в данном тесте");
+                    return;
+                }
+                a.UpdateQuery(name_vopros.Text, Convert.ToInt32(ID_Tes), tip_voprosa.SelectedIndex.ToString(), Convert.ToInt32(balli.Text), ID_Vopros);
+                AnswerTableAdapter a1 = new AnswerTableAdapter();
+                a1.DeleteQueryByVoprosID(ID_Vopros);
+                a1.InsertQuery(answer_text.Text, true, ID_Vopros);
+                clearVopros();
+            }
         }
 
         private void spisok_vopsov_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -432,6 +491,11 @@ namespace Kursach.Prepodavatel
                 for (int i = 0; i < b1.Rows.Count; i++)
                     tip1_list.Add(new ModelVoros_tip1 { IsChecked = b1[i].IsTrue, NameVopros = b1[i].TextAnswer });
             }
+            if(Convert.ToInt16(b[0].TypeVopros) == 2)
+            {
+                tip1_list.Clear();
+                answer_text.Text = b1[0].TextAnswer;
+            }
 
             add_vopros_btn.Visibility = Visibility.Hidden;
             edit_vopros_btn.Visibility = Visibility.Visible;
@@ -454,6 +518,29 @@ namespace Kursach.Prepodavatel
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             clearVopros();
+        }
+
+        private void btn_publish_Click(object sender, RoutedEventArgs e)
+        {
+            if(spisok_vopsov.Items.Count < 1)
+            {
+                MessageBox.Show("Невозможно опубликовать тест без вопросов!");
+                return;
+            }    
+            if (MessageBox.Show("Вы уверены что желаете опубликовать тест группе/классу?\nОпубликованный тест нельзя изменять!", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                return;
+            }
+            SrokSdachi t = new SrokSdachi();
+            if (t.ShowDialog() == false)
+                MessageBox.Show("Срок выполнения теста не указан!");
+            else
+            {
+                TestTableAdapter a = new TestTableAdapter();
+                a.PublishTest(Controllers.DateTimeTest, true, DateTime.Now, Convert.ToInt32(ID_Tes));
+                MessageBox.Show("Тест опубликован студентам!");
+                Controllers.fram_prep.Content = new Lenta(ID_Dicp);
+            }
         }
     }
 }

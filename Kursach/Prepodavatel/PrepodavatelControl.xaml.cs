@@ -28,8 +28,6 @@ namespace Kursach.Prepodavatel
             TablePrepodavatelTableAdapter a = new TablePrepodavatelTableAdapter();
             DataBase.TablePrepodavatelDataTable b = new DataBase.TablePrepodavatelDataTable();
             a.FillByLogin(b, Controllers.auth_login);
-            familia.Text = b[0].Familia;
-            ima.Text = b[0].Ima;
             if (b[0].KLRukovod == "Не назначено")
                 ClRuk.IsEnabled = false;
             if (b[0].Prepodavanie == "Не преподаёт")

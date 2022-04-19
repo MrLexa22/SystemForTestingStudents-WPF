@@ -7,23 +7,52 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Button Margin="10" VerticalAlignment="Center"  Height="80" BorderBrush="Black" FontSize="16" Cursor="Hand" Click="Button_Click">
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Создать тест</TextBlock>
-        </Button>
-        <Button Grid.Column="1" Margin="10" VerticalAlignment="Center"  Height="80" BorderBrush="Black" FontSize="16" Cursor="Hand" Click="Button_Click_1">
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Черновики тестов</TextBlock>
-        </Button>
-        <Button Grid.Column="2" Margin="10" VerticalAlignment="Center"  Height="80" BorderBrush="Black" FontSize="16" Cursor="Hand">
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Просмотр опубликованных тестов</TextBlock>
-        </Button>
-        <Button Grid.Column="3" Margin="10" VerticalAlignment="Center"  Height="80" BorderBrush="Black" FontSize="16" Cursor="Hand">
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center">Просмотр результатов. Оценки</TextBlock>
-        </Button>
+        <ListView SelectionChanged="TvBox_SelectionChanged" SelectedValuePath="ID_Disciplina" SizeChanged="TvBox_SizeChanged" x:Name="TvBox" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Margin" Value="10" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="{Binding Counter}" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border CornerRadius="10">
+                        <Border CornerRadius="10">
+                            <Grid>
+                                <Border Name="Mask"
+                                    Background="White"
+                                    BorderBrush="Transparent"
+                                    BorderThickness=".5"
+                                    CornerRadius="10">
+                                </Border>
+                                <StackPanel Cursor="Hand">
+                                    <Grid>
+                                        <Image Source="pack://application:,,,/Assets/ShapkaCourse.png" Stretch="Uniform" MaxWidth="440"/>
+                                        <TextBlock FontFamily="Arial" FontWeight="Bold" FontSize="22" Text="{Binding ShortName}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" />
+                                        <TextBlock TextWrapping="Wrap" MaxWidth="200" FontFamily="Arial" FontSize="11" Text="{Binding NameDisciplina}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10 20" />
+                                    </Grid>
+                                    <TextBlock FontFamily="Arial" FontSize="18" Margin="10" Padding="0 0 0 40" Grid.Row="1" Text="{Binding NameClassParallel}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                    <StackPanel.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=Mask}" />
+                                    </StackPanel.OpacityMask>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </UserControl>

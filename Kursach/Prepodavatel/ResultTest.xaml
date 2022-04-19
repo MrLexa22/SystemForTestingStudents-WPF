@@ -1,0 +1,260 @@
+﻿<UserControl x:Class="Kursach.Prepodavatel.ResultTest"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kursach.Prepodavatel"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="2" FontFamily="Arial" TextAlignment="Center" Margin="10" FontSize="32" TextWrapping="Wrap">Результаты тестирования<Run Name="rezhim_create"></Run></TextBlock>
+            <Button Margin="10 0 0 0" BorderBrush="Transparent" Cursor="Hand" FontFamily="Arial" FontSize="18" Click="Button_Click">Назад</Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="190"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontFamily="Arial" FontSize="22" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 10 10 10">Название теста:</TextBlock>
+                    <TextBlock Name="name_test"  Margin="0 10 20 10" Grid.Column="1" FontSize="22" VerticalAlignment="Center"></TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock FontFamily="Arial" FontSize="24" Margin="0 10" HorizontalAlignment="Center">Список учащихся</TextBlock>
+            <ListBox SelectionChanged="spisok_students_SelectionChanged" SelectedValuePath="ID_Students" Grid.Row="1" Name="spisok_students" Background="Silver">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock TextWrapping="Wrap" FontSize="16" Text="{Binding Path=FIO}" />
+                            <TextBlock Margin="3 0 0 0" TextWrapping="Wrap" FontSize="16" Text="{Binding Path=status}" />
+                            <TextBlock Margin="3 0 0 0" TextWrapping="Wrap" FontSize="16" Text="{Binding Path=ochenka}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <Grid Visibility="Hidden" x:Name="grid_fioandochenka" Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontFamily="Arial" FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 12 10 0">Фамилия Имя учащегося:</TextBlock>
+            <TextBlock Grid.Column="1" FontFamily="Arial" FontSize="22" VerticalAlignment="Center" TextWrapping="Wrap" Margin="0 12 0 0"><Run Name="familia"></Run><Run Text=" "></Run><Run Name="ima"></Run></TextBlock>
+
+            <TextBlock FontFamily="Arial" FontSize="22" HorizontalAlignment="Right" Margin="0 15" Grid.Row="1"><Run FontWeight="Bold" Name="status">Сдано</Run> Баллы: <Run Name="zarabot_balli">0</Run> из <Run Name="max_balli">2</Run> ||</TextBlock>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"></ColumnDefinition>
+                    <ColumnDefinition Width="160"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="ochenka" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Оценка" Margin="10 0 10 0" MaxLength="1" FontFamily="Arial" FontSize="22"></TextBox>
+                <Button Grid.Column="1" Padding="7" HorizontalAlignment="Center">Поставить оценку</Button>
+            </Grid>
+        </Grid>
+        <Grid Visibility="Hidden" x:Name="grid_voprosi" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock FontFamily="Arial" FontSize="22" Margin="20 10 20 10">Список вопросов</TextBlock>
+                    <ListBox SelectionChanged="spisok_vopsov_SelectionChanged" SelectedValuePath="IdVopros" Grid.Row="1" Name="spisok_vopsov" Background="Silver">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="16" Text="Вопрос №" />
+                                    <TextBlock FontSize="16" Text="{Binding Path=NomerVoprosa,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0" Margin="10 0 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Margin="0 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontFamily="Arial" Margin="0 0 20 0" FontSize="22" TextAlignment="Right" VerticalAlignment="Center">Вопрос № <Run Name="nomer_vopros">1</Run></TextBlock>
+                        <TextBlock TextWrapping="Wrap" x:Name="name_vopros" materialDesign:HintAssist.Hint="Введите вопрос" Grid.Column="1" VerticalAlignment="Center" FontFamily="Arial" FontSize="22"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="220"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBox x:Name="balli" MaxLength="2" Grid.Column="0" FontFamily="Arial" FontSize="22" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Баллы" VerticalAlignment="Center"></TextBox>
+                        <TextBlock Margin="0 0 10 0" FontFamily="Arial" FontSize="22" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">из <Run Name="max_ball">2</Run></TextBlock>
+                        <Button Grid.Column="2" HorizontalAlignment="Center">Обновить балл уч.</Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="4" Margin="10 0 0 0" Name="grid3" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1" Name="grid_tip_1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition ></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DataGrid Visibility="Hidden" HeadersVisibility="None" Grid.Row="1" Margin="10 10 10 0" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="tip_1" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+                            <DataGrid.Resources>
+                                <ResourceDictionary>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    <Style x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="Background" Value="{x:Null}" />
+                                        <Setter Property="BorderBrush" Value="{x:Null}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="{x:Null}" />
+                                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <Setter Property="Background" Value="{x:Null}" />
+                                        <Setter Property="BorderBrush" Value="{x:Null}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="{x:Null}" />
+                                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ResourceDictionary>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Название теста" Width="1*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="10 8 10 0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <RadioButton Foreground="{Binding ColorText}" Focusable="False" IsHitTestVisible="False" FontFamily="Arial" FontSize="16" GroupName="group_1" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                    <TextBlock TextWrapping="Wrap" Text="{Binding NameVopros, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                                                </RadioButton>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <DataGrid Visibility="Hidden" HeadersVisibility="None" Grid.Row="1" Margin="10 10 10 0" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="tip_2" CanUserResizeRows="False" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+                            <DataGrid.Resources>
+                                <ResourceDictionary>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    <Style x:Key="{x:Type DataGridCell}" TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="Background" Value="{x:Null}" />
+                                        <Setter Property="BorderBrush" Value="{x:Null}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="{x:Null}" />
+                                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <Setter Property="Background" Value="{x:Null}" />
+                                        <Setter Property="BorderBrush" Value="{x:Null}" />
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Background" Value="{x:Null}" />
+                                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ResourceDictionary>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Header="Название теста" Width="1*">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="10 8 10 0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <CheckBox Foreground="{Binding ColorText}" Focusable="False" IsHitTestVisible="False" FontFamily="Arial" FontSize="16" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                    <TextBlock TextWrapping="Wrap" Text="{Binding NameVopros, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+                                                </CheckBox>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                    <Grid  Grid.Column="1" Name="grid_tip_3" Visibility="Hidden">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock FontFamily="Arial" FontSize="16" Margin="20" MaxWidth="500" VerticalAlignment="Top">Правильный ответ: <Run x:Name="answer_text" Foreground="Green"></Run></TextBlock>
+                        <TextBlock FontFamily="Arial" FontSize="16" Grid.Row="1" Margin="20" MaxWidth="500" VerticalAlignment="Top" >Ответ учащегося: <Run x:Name="student_answer_text"></Run></TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

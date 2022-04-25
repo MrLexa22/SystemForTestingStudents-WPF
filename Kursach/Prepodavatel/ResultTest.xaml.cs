@@ -25,6 +25,7 @@ namespace Kursach.Prepodavatel
     {
         public int ID_Test;
         public int ID_Disciplina;
+        public int ID_Vopros;
         public int ID_Class;
         public class Students
         {
@@ -72,16 +73,29 @@ namespace Kursach.Prepodavatel
                 }
                 else
                 {
+                    AnswersStudentsTableAdapter aaa = new AnswersStudentsTableAdapter();
+                    DataBase.AnswersStudentsDataTable bbb = new DataBase.AnswersStudentsDataTable();
+                    aaa.FillByIDStTest(bbb, b1[i].ID_Student, ID_Test);
                     var check = bb[0]["Ochenka"] != DBNull.Value ? bb[0]["Ochenka"].ToString() : "t";
-                    if (check != "t")
+                    if (bbb.Rows.Count > 0)
                     {
-                        student.status = "(+):";
-                        student.ochenka = bb[0].Ochenka.ToString();
+                        if (check != "t")
+                        {
+                            student.status = "(+):";
+                            student.ochenka = bb[0].Ochenka.ToString();
+                        }
+                        else
+                            student.status = "(+)";
                     }
                     else
                     {
-                        student.status = "(+)";
-                        student.ochenka = "";
+                        if (check != "t")
+                        {
+                            student.status = "(-):";
+                            student.ochenka = bb[0].Ochenka.ToString();
+                        }
+                        else
+                            student.status = "(-)";
                     }
                 }
                 students.Add(student);
@@ -108,6 +122,7 @@ namespace Kursach.Prepodavatel
             familia.Text = b[0].Familia;
             ima.Text = b[0].Ima;
             ID_Student_Selected = b[0].ID_Student;
+            SchetStudentBall();
 
             VoprosTableAdapter aa = new VoprosTableAdapter();
             DataBase.VoprosDataTable bb = new DataBase.VoprosDataTable();
@@ -127,13 +142,26 @@ namespace Kursach.Prepodavatel
                     ochenka.Text = "";
                 else
                     ochenka.Text = b1[0].Ochenka.ToString();
-                status.Text = "Сдано";
-                grid_voprosi.Visibility = Visibility.Visible;
 
-                VoprosTableAdapter a2 = new VoprosTableAdapter();
-                DataBase.VoprosDataTable b2 = new DataBase.VoprosDataTable();
-                a2.FillByIDTest(b2, ID_Test);
-                list_voprosi_update();
+                AnswersStudentsTableAdapter aaa = new AnswersStudentsTableAdapter();
+                DataBase.AnswersStudentsDataTable bbb = new DataBase.AnswersStudentsDataTable();
+                aaa.FillByIDStTest(bbb, ID_Student_Selected, ID_Test);
+                if (bbb.Rows.Count > 0)
+                {
+                    status.Text = "Сдано";
+                    grid_voprosi.Visibility = Visibility.Visible;
+
+                    VoprosTableAdapter a2 = new VoprosTableAdapter();
+                    DataBase.VoprosDataTable b2 = new DataBase.VoprosDataTable();
+                    a2.FillByIDTest(b2, ID_Test);
+                    list_voprosi_update();
+                }
+                else
+                {
+                    status.Text = "Не сдано";
+                    grid_voprosi.Visibility = Visibility.Hidden;
+                    zarabot_balli.Text = "0";
+                }
             }
             else
             {
@@ -145,7 +173,70 @@ namespace Kursach.Prepodavatel
         }
         public ObservableCollection<ModelListVoprosov> voprosi = new ObservableCollection<ModelListVoprosov>();
         public ObservableCollection<ModelVoros_tip1> tip1_list = new ObservableCollection<ModelVoros_tip1>();
+        public void SchetStudentBall()
+        {
+            int itog_ball = 0;
 
+            VoprosTableAdapter a = new VoprosTableAdapter();
+            DataBase.VoprosDataTable b = new DataBase.VoprosDataTable();
+            a.FillByIDTest(b, ID_Test);
+            for (int i = 0; i < b.Rows.Count; i++)
+            {
+                int ball = 0;
+                AnswerTableAdapter a1 = new AnswerTableAdapter();
+                DataBase.AnswerDataTable b1 = new DataBase.AnswerDataTable();
+                a1.FillByIDVopros(b1, b[i].ID_Vopros);
+                if (Convert.ToInt16(b[i].TypeVopros) == 0 || Convert.ToInt16(b[i].TypeVopros) == 1)
+                {
+                    int count_true_answers = 0;
+                    for (int j = 0; j < b1.Rows.Count; j++)
+                        if (b1[j].IsTrue)
+                            count_true_answers++;
+
+                    AnswersStudentsTableAdapter ss = new AnswersStudentsTableAdapter();
+                    if ((count_true_answers == ss.HowMuchTrue(b[i].ID_Vopros, ID_Student_Selected)) && ss.HowMuchFalse(b[i].ID_Vopros, ID_Student_Selected) == 0)
+                        ball = b[i].Ball;
+                    else
+                        ball = 0;
+
+                    DataBase.AnswersStudentsDataTable sb = new DataBase.AnswersStudentsDataTable();
+                    ss.FillByIDVopros(sb, b[i].ID_Vopros, ID_Student_Selected);
+                    if (sb.Rows.Count != 0)
+                    {
+                        var check = sb[0]["BallStudent"] != DBNull.Value ? sb[0]["BallStudent"].ToString() : "t";
+                        if (check != "t")
+                            ball = sb[0].BallStudent;
+                    }
+                }
+                else if (Convert.ToInt16(b[i].TypeVopros) == 2)
+                {
+                    StudentAnswerTableAdapter s = new StudentAnswerTableAdapter();
+                    DataBase.StudentAnswerDataTable sb = new DataBase.StudentAnswerDataTable();
+                    s.FillByIDAnswStud(sb, ID_Student_Selected, b1[0].ID_Answer);
+                    if (sb.Rows.Count != 0)
+                    {
+                        if (sb[0].TextAnswer.ToLower() == b1[0].TextAnswer.ToLower())
+                            ball = b[i].Ball;
+                        else
+                            ball = 0;
+                    }
+                    else
+                        ball = 0;
+
+                    AnswersStudentsTableAdapter ss = new AnswersStudentsTableAdapter();
+                    DataBase.AnswersStudentsDataTable sbs = new DataBase.AnswersStudentsDataTable();
+                    ss.FillByIDVopros(sbs, b[i].ID_Vopros, ID_Student_Selected);
+                    if (sbs.Rows.Count != 0)
+                    {
+                        var check = sbs[0]["BallStudent"] != DBNull.Value ? sbs[0]["BallStudent"].ToString() : "t";
+                        if (check != "t")
+                            ball = sbs[0].BallStudent;
+                    }
+                }
+                itog_ball += ball;
+            }
+            zarabot_balli.Text = itog_ball.ToString();
+        }
         public class ModelVoros_tip1 : INotifyPropertyChanged
         {
             private string _namevopros;
@@ -307,6 +398,7 @@ namespace Kursach.Prepodavatel
             a.FillByID(b, Convert.ToInt32(spisok_vopsov.SelectedValue));
             name_vopros.Text = b[0].NameVopros;
             nomer_vopros.Text = customer.NomerVoprosa;
+            ID_Vopros = Convert.ToInt32(spisok_vopsov.SelectedValue);
 
             AnswerTableAdapter a1 = new AnswerTableAdapter();
             DataBase.AnswerDataTable b1 = new DataBase.AnswerDataTable();
@@ -326,9 +418,11 @@ namespace Kursach.Prepodavatel
                     balli.Text = b[0].Ball.ToString();
                 else
                     balli.Text = "0";
-                //var check = b[0]["Ball"] != DBNull.Value ? b1[0]["Ball"].ToString() : "t";
-                //if(check != "t")
-                //    balli.Text = b[0];
+                DataBase.AnswersStudentsDataTable sb = new DataBase.AnswersStudentsDataTable();
+                ss.FillByIDVopros(sb, b[0].ID_Vopros, ID_Student_Selected);
+                var check = sb[0]["BallStudent"] != DBNull.Value ? sb[0]["BallStudent"].ToString() : "t";
+                if (check != "t")
+                    balli.Text = sb[0].BallStudent.ToString();
 
                 tip1_list.Clear();
                 for (int i = 0; i < b1.Rows.Count; i++)
@@ -369,7 +463,66 @@ namespace Kursach.Prepodavatel
                     balli.Text = "0";
                 }
 
+                AnswersStudentsTableAdapter ss = new AnswersStudentsTableAdapter();
+                DataBase.AnswersStudentsDataTable sbs = new DataBase.AnswersStudentsDataTable();
+                ss.FillByIDVopros(sbs, b[0].ID_Vopros, ID_Student_Selected);
+                var check = sbs[0]["BallStudent"] != DBNull.Value ? sbs[0]["BallStudent"].ToString() : "t";
+                if (check != "t")
+                    balli.Text = sbs[0].BallStudent.ToString();
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ochenka.Text = ochenka.Text.Trim();
+                Convert.ToInt32(ochenka.Text);
+            }
+            catch { 
+                MessageBox.Show("Ошибка. Введите корректную оценку!");
+                return;
+            }
+            if(Convert.ToInt32(ochenka.Text) < 2 || Convert.ToInt32(ochenka.Text) > 5)
+            {
+                MessageBox.Show("Укажите оценку в диапазона 2-5");
+                return;
+            }
+            ResultsTestTableAdapter a = new ResultsTestTableAdapter();
+            if(a.FindExist(ID_Student_Selected,ID_Test) > 0)
+            {
+                a.UpdateQuery(Convert.ToInt32(ochenka.Text), ID_Student_Selected, ID_Test);
+                MessageBox.Show("Оценка обновлена!");
+            }
+            else
+            {
+                a.InsertQuery(ID_Student_Selected, ID_Test, Convert.ToInt32(ochenka.Text));
+                MessageBox.Show("Оценка поставлена!");
+            }
+            UpdateSpisokStudent();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            balli.Text = balli.Text.Trim();
+            try
+            {
+                Convert.ToInt16(balli.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Количество баллов указано некорректно!");
+                return;
+            }
+            if(Convert.ToInt16(balli.Text) > Convert.ToInt16(max_ball.Text) || (Convert.ToInt16(balli.Text) < 0))
+            {
+                MessageBox.Show("Количество баллов не может превышать максимальный балл. И не может быть меньше 0");
+                return;
+            }
+            StudentAnswerTableAdapter a = new StudentAnswerTableAdapter();
+            a.UpdateBallStudent(Convert.ToInt16(balli.Text), ID_Vopros, ID_Student_Selected);
+            MessageBox.Show("Балл студента за вопрос обновлён!");
+            SchetStudentBall();
         }
     }
 }

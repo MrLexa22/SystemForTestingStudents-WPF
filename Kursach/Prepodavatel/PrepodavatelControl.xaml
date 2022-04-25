@@ -30,7 +30,7 @@
             <Button x:Name="prepod" Grid.Column="1" Grid.Row="1" Margin="12" VerticalAlignment="Center"  Height="40" BorderBrush="Black" FontSize="24" Cursor="Hand" Click="prepod_Click">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Управление тестами</TextBlock>
             </Button>
-            <Button x:Name="ClRuk" Grid.Column="2" Grid.Row="2" Margin="12" VerticalAlignment="Center"  Height="40" BorderBrush="Black" FontSize="24" Cursor="Hand">
+            <Button x:Name="ClRuk" Grid.Column="2" Grid.Row="2" Margin="12" VerticalAlignment="Center"  Height="40" BorderBrush="Black" FontSize="24" Cursor="Hand" Click="ClRuk_Click">
                 <TextBlock TextWrapping="Wrap" TextAlignment="Center">Классное руководство</TextBlock>
             </Button>
             <StackPanel Grid.Column="3" HorizontalAlignment="Center" Margin="20 0 20 0" VerticalAlignment="Center">

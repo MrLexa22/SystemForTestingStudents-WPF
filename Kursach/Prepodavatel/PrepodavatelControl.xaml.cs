@@ -55,5 +55,10 @@ namespace Kursach.Prepodavatel
         {
             Controllers.fram_prep.Content = new UpravlenieTests();
         }
+
+        private void ClRuk_Click(object sender, RoutedEventArgs e)
+        {
+            Controllers.fram_prep.Content = new UpravlenieClRukovod();
+        }
     }
 }

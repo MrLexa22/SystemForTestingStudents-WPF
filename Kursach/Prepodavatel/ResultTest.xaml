@@ -86,12 +86,12 @@
                     <ColumnDefinition Width="160"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="ochenka" VerticalAlignment="Center" materialDesign:HintAssist.Hint="Оценка" Margin="10 0 10 0" MaxLength="1" FontFamily="Arial" FontSize="22"></TextBox>
-                <Button Grid.Column="1" Padding="7" HorizontalAlignment="Center">Поставить оценку</Button>
+                <Button Click="Button_Click_1" Grid.Column="1" Padding="7" HorizontalAlignment="Center">Поставить оценку</Button>
             </Grid>
         </Grid>
         <Grid Visibility="Hidden" x:Name="grid_voprosi" Grid.Row="3" Grid.Column="1" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition Width="0.35*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid>
@@ -101,7 +101,7 @@
                         <RowDefinition></RowDefinition>
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBlock FontFamily="Arial" FontSize="22" Margin="20 10 20 10">Список вопросов</TextBlock>
+                    <TextBlock FontFamily="Arial" FontSize="20" Margin="20 10 20 10" TextWrapping="Wrap" TextAlignment="Center">Список вопросов</TextBlock>
                     <ListBox SelectionChanged="spisok_vopsov_SelectionChanged" SelectedValuePath="IdVopros" Grid.Row="1" Name="spisok_vopsov" Background="Silver">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -139,7 +139,7 @@
                         </Grid.ColumnDefinitions>
                         <TextBox x:Name="balli" MaxLength="2" Grid.Column="0" FontFamily="Arial" FontSize="22" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Баллы" VerticalAlignment="Center"></TextBox>
                         <TextBlock Margin="0 0 10 0" FontFamily="Arial" FontSize="22" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">из <Run Name="max_ball">2</Run></TextBlock>
-                        <Button Grid.Column="2" HorizontalAlignment="Center">Обновить балл уч.</Button>
+                        <Button Click="Button_Click_2" Grid.Column="2" HorizontalAlignment="Center">Обновить балл уч.</Button>
                     </Grid>
                 </Grid>
                 <Grid Grid.Row="4" Margin="10 0 0 0" Name="grid3" Grid.Column="1">

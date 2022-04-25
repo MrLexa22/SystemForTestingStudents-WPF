@@ -1,6 +1,8 @@
 ﻿using Kursach.DataBaseTableAdapters;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -130,6 +132,7 @@ namespace Kursach.Prepodavatel
             Lentas.IsEnabled = false;
             tests_Chernovik.Visibility = Visibility.Hidden;
             tests_Lenta.Visibility = Visibility.Visible;
+            data_grid.Visibility = Visibility.Hidden;
             PublishedTest();
         }
 
@@ -139,13 +142,85 @@ namespace Kursach.Prepodavatel
             Chernoviki.IsEnabled = false;
             tests_Chernovik.Visibility = Visibility.Visible;
             tests_Lenta.Visibility = Visibility.Hidden;
+            data_grid.Visibility = Visibility.Hidden;
             ChernovikiTest();
         }
 
         private void Results_Click(object sender, RoutedEventArgs e)
         {
             AllTrueButtons();
-            Results.IsEnabled = false;
+            ChernovikiTest();
+            try
+            {
+                Results.IsEnabled = false;
+                tests_Chernovik.Visibility = Visibility.Hidden;
+                tests_Lenta.Visibility = Visibility.Hidden;
+                data_grid.Visibility = Visibility.Visible;
+
+                DiscipliniTableAdapter a = new DiscipliniTableAdapter();
+                DataBase.DiscipliniDataTable b = new DataBase.DiscipliniDataTable();
+                a.FillByID(b, ID_Disciplina);
+
+                StudentsTableTableAdapter a1 = new StudentsTableTableAdapter();
+                DataBase.StudentsTableDataTable b1 = new DataBase.StudentsTableDataTable();
+                a1.FillByIDClass(b1, b[0].Class_ID);
+
+                DataTable data = new DataTable();
+                data.Columns.Add("Фамилия Имя Отчество");
+
+                TestTableAdapter at = new TestTableAdapter();
+                DataBase.TestDataTable bt = new DataBase.TestDataTable();
+                at.FillByIDDiscipli(bt, ID_Disciplina);
+                for (int i = 0; i < bt.Rows.Count; i++)
+                {
+                    data.Columns.Add(bt[i].Name_Test);
+                }
+                data.Columns.Add("Средний балл");
+
+                for (int i = 0; i < b1.Rows.Count; i++)
+                {
+                    DataRow f = data.NewRow();
+                    f["Фамилия Имя Отчество"] = b1[i].FIO;
+                    double sr_ball = 0;
+                    int count_sk = 0;
+                    for (int j = 0; j < bt.Rows.Count; j++)
+                    {
+                        ResultsTestTableAdapter ra = new ResultsTestTableAdapter();
+                        DataBase.ResultsTestDataTable rb = new DataBase.ResultsTestDataTable();
+                        ra.FillByIDST(rb, bt[j].ID_Test, b1[i].ID_Student);
+                        if (rb.Rows.Count > 0)
+                        {
+                            var check = rb[0]["Ochenka"] != DBNull.Value ? rb[0]["Ochenka"].ToString() : "t";
+                            if (check != "t")
+                            {
+                                f[bt[j].Name_Test] = rb[0].Ochenka.ToString();
+                                count_sk++;
+                                sr_ball += rb[0].Ochenka;
+                            }
+                            else
+                            {
+                                f[bt[j].Name_Test] = "Не проверено";
+                            }
+                        }
+                        else
+                        {
+                            f[bt[j].Name_Test] = "Не сдано";
+                        }
+                    }
+                    if (sr_ball > 0)
+                        f["Средний балл"] = Math.Round((sr_ball / count_sk), 2).ToString();
+                    else
+                        f["Средний балл"] = "0";
+                    data.Rows.Add(f);
+                }
+                data_grid.ItemsSource = data.DefaultView;
+                data_grid.Columns[0].Width = 250;
+                for (int i = 1; i<data_grid.Columns.Count; i++)
+                {
+                    data_grid.Columns[i].Width = 130;
+                }
+            }
+            catch { data_grid.Visibility = Visibility.Hidden; }
         }
 
         private void tests_Chernovik_SelectionChanged(object sender, SelectionChangedEventArgs e)

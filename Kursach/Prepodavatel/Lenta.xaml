@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Kursach.Prepodavatel" xmlns:sys="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <local:DateTimeToDateConverter x:Key="myDateConverter" />
@@ -30,7 +31,12 @@
                     </StackPanel>
                     <Button FontFamily="Arial" FontSize="18" Cursor="Hand" Background="#c26401" Foreground="White" Margin="10 0 0 0" HorizontalAlignment="Left" BorderBrush="{x:Null}" Click="Button_Click">Назад</Button>
                     <Button FontFamily="Arial" FontSize="18" Cursor="Hand" Background="#c26401" Foreground="White" Margin="0 0 10 0" HorizontalAlignment="Right" BorderBrush="{x:Null}" Click="Button_Click_1">+ Создать тест</Button>
-                    <TextBlock Grid.Row="1" Name="Disciplina" FontFamily="Arial" FontWeight="Bold" FontSize="22" Text="Технология разработки программного обеспечения" HorizontalAlignment="Left" Width="550"  TextWrapping="Wrap" VerticalAlignment="Top" Margin="10" />
+                    <Grid Grid.Row="1">
+                        <TextBlock Grid.Row="1" Name="Disciplina" FontFamily="Arial" FontWeight="Bold" FontSize="22" Text="Технология разработки программного обеспечения" HorizontalAlignment="Left" Width="580"  TextWrapping="Wrap" VerticalAlignment="Top" Margin="10" />
+                        <Button Width="160" FontFamily="Arial" Height="60" FontSize="18" Cursor="Hand" Background="#c26401" Foreground="White" Margin="60 0 10 0" HorizontalAlignment="Right" BorderBrush="{x:Null}" Click="Button_Click_2">
+                            <TextBlock TextAlignment="Center" TextWrapping="Wrap">Дублирование тестов</TextBlock>
+                        </Button>
+                    </Grid>
                     <TextBlock Grid.Row="2" Name="Group" FontFamily="Arial" FontSize="22" Text="3Б кл." HorizontalAlignment="Left" Width="580" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10" />
                 </Grid>
             </Grid>
@@ -75,60 +81,16 @@
                             </Grid.ColumnDefinitions>
                             <Image Margin="10 0 0 0" Source="pack://application:,,,/Assets/TestLogo.png" Stretch="Uniform" Height="60"></Image>
                             <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                        <RowDefinition Height="Auto"></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <TextBlock TextWrapping="Wrap" Grid.Row="0" Padding="10 10 0 0" FontFamily="Arial" FontWeight="Bold" FontSize="18" Text="{Binding Name_Test}" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
-                                    <TextBlock Grid.Row="1" Padding="10 2 0 0" TextWrapping="Wrap" FontFamily="Arial" FontSize="12" Text="{Binding WhenPublished, Converter={StaticResource myDateConverter}, StringFormat={}Дата публикации: {0}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
-                                    <TextBlock Grid.Row="2" Padding="10 2 0 0" FontFamily="Arial" FontSize="12" Text="{Binding SrokSdachi, Converter={StaticResource myDateConverter}, StringFormat={}Дата завершения: {0}}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
-                                    <TextBlock Grid.Row="3" Padding="10 2 0 10" FontFamily="Arial" FontSize="12" Text="{Binding Status, StringFormat={}Статус: {0}}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
-                            </Grid>
-                            <Grid Grid.Column="2" Margin="0 0 20 0">
-                                <Button BorderBrush="{x:Null}" HorizontalAlignment="Center">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="pack://application:,,,/Assets/Tochki.png"/>
-                                    </Button.Background>
-                                </Button>
-                                <Button ContextMenuService.IsEnabled="false" MouseDown="Button_MouseDown" VerticalAlignment="Center" Height="50" Width="50">
-                                    <Button.ContextMenu>
-                                        <ContextMenu>
-                                            <MenuItem Header="Удалить"/>
-                                        </ContextMenu>
-                                    </Button.ContextMenu>
-                                    <Button.Style>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Setter Property="Background" Value="Transparent"/>
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type Button}">
-                                                        <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderThickness="1">
-                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                        </Border>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#66D6D6D6"/>
-                                                </Trigger>
-                                                <EventTrigger RoutedEvent="Click">
-                                                    <EventTrigger.Actions>
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
-                                                                    <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
-                                                                </BooleanAnimationUsingKeyFrames>
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </EventTrigger.Actions>
-                                                </EventTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock TextWrapping="Wrap" Grid.Row="0" Padding="10 10 0 0" FontFamily="Arial" FontWeight="Bold" FontSize="18" Text="{Binding Name_Test}" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
+                                <TextBlock Grid.Row="1" Padding="10 2 0 0" TextWrapping="Wrap" FontFamily="Arial" FontSize="12" Text="{Binding WhenPublished, Converter={StaticResource myDateConverter}, StringFormat={}Дата публикации: {0}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                                <TextBlock Grid.Row="2" Padding="10 2 0 0" FontFamily="Arial" FontSize="12" Text="{Binding SrokSdachi, Converter={StaticResource myDateConverter}, StringFormat={}Дата завершения: {0}}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                <TextBlock Grid.Row="3" Padding="10 2 0 10" FontFamily="Arial" FontSize="12" Text="{Binding Status, StringFormat={}Статус: {0}}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
                             </Grid>
                         </Grid>
                     </Border>
@@ -182,50 +144,6 @@
                                 </Grid.RowDefinitions>
                                 <TextBlock TextWrapping="Wrap" Grid.Row="0" Padding="10 10 0 0" FontFamily="Arial" FontWeight="Bold" FontSize="18" Text="{Binding Name_Test}" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
                                 <TextBlock Grid.Row="3" Padding="10 2 0 10" FontFamily="Arial" FontSize="12" Text="Статус: черновик" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
-                            </Grid>
-                            <Grid Grid.Column="2" Margin="0 0 20 0">
-                                <Button BorderBrush="{x:Null}" HorizontalAlignment="Center">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="pack://application:,,,/Assets/Tochki.png"/>
-                                    </Button.Background>
-                                </Button>
-                                <Button ContextMenuService.IsEnabled="false" MouseDown="Button_MouseDown" VerticalAlignment="Center" Height="50" Width="50">
-                                    <Button.ContextMenu>
-                                        <ContextMenu>
-                                            <MenuItem Header="Удалить"/>
-                                        </ContextMenu>
-                                    </Button.ContextMenu>
-                                    <Button.Style>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Setter Property="Background" Value="Transparent"/>
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type Button}">
-                                                        <Border Background="{TemplateBinding Background}" CornerRadius="10" BorderThickness="1">
-                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                        </Border>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="#66D6D6D6"/>
-                                                </Trigger>
-                                                <EventTrigger RoutedEvent="Click">
-                                                    <EventTrigger.Actions>
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
-                                                                    <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
-                                                                </BooleanAnimationUsingKeyFrames>
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </EventTrigger.Actions>
-                                                </EventTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
                             </Grid>
                         </Grid>
                     </Border>

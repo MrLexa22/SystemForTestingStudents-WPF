@@ -25,9 +25,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition MaxWidth="300" Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Margin="10 0 0 0" FontSize="22" VerticalAlignment="Center" TextAlignment="Center" FontFamily="Arial">Дисциплина: </TextBlock>
-                <ComboBox Cursor="Arrow" SelectionChanged="search_SelectionChanged" DisplayMemberPath="NameDisciplina" SelectedValuePath="ID_Disciplina" x:Name="search" Grid.Column="7" FontSize="16" Margin="10" HorizontalAlignment="Stretch" />
+                <ComboBox Cursor="Arrow" SelectionChanged="search_SelectionChanged" DisplayMemberPath="NameDisciplina" SelectedValuePath="ID_Disciplina" x:Name="search" Grid.Column="1" FontSize="16" Margin="10" HorizontalAlignment="Stretch" />
+                <Button Grid.Column="2" FontFamily="Arial" Margin="25 0 0 0" FontSize="18" Cursor="Hand" Click="Button_Click">Личная информация учащихся</Button>
             </Grid>
         </Grid>
         <DataGrid FrozenColumnCount="1" HorizontalAlignment="Left" HeadersVisibility="Column" Grid.Row="3" IsReadOnly="True" Margin="10" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="data_grid" CanUserResizeRows="False" AutoGenerateColumns="True" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">

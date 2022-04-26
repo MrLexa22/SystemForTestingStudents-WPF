@@ -18,9 +18,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="2" FontFamily="Arial" TextAlignment="Center" Margin="10" FontSize="32" TextWrapping="Wrap">Создание теста - <Run Name="rezhim_create"></Run></TextBlock>
+            <TextBlock Grid.Column="1" FontFamily="Arial" TextAlignment="Center" Margin="10" FontSize="32" TextWrapping="Wrap">Создание теста - <Run Name="rezhim_create"></Run></TextBlock>
             <Button Margin="10 0 0 0" BorderBrush="Transparent" Cursor="Hand" FontFamily="Arial" FontSize="18" Click="Button_Click">Назад</Button>
+            <Button x:Name="delete_btn" Margin="10 0 10 0" BorderBrush="Transparent" Cursor="Hand" FontFamily="Arial" FontSize="18" Grid.Column="2" Click="delete_btn_Click">Удалить</Button>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

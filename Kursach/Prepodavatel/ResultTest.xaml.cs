@@ -524,5 +524,45 @@ namespace Kursach.Prepodavatel
             MessageBox.Show("Балл студента за вопрос обновлён!");
             SchetStudentBall();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что желаете изменить срок сдачи?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                SrokSdachi t = new SrokSdachi();
+                if (t.ShowDialog() == false)
+                    MessageBox.Show("Срок выполнения теста не указан!");
+                else
+                {
+                    TestTableAdapter a = new TestTableAdapter();
+                    a.UpdateSrok(Controllers.DateTimeTest, ID_Test);
+                    MessageBox.Show("Срок выполнения обновлён!");
+                }
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что желаете отправить данный тест в черновики?\nВсе результаты учащихся будут обнулены!!", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                TestTableAdapter a = new TestTableAdapter();
+                a.PublishTest(null, false, null, ID_Test);
+                ResultsTestTableAdapter a1 = new ResultsTestTableAdapter();
+                a1.DeleteWhereTestID(ID_Test);
+                StudentAnswerTableAdapter a2 = new StudentAnswerTableAdapter();
+                a2.DeleteStudAnswers(ID_Test);
+                Controllers.fram_prep.Content = new CreateTest(ID_Test.ToString(), ID_Disciplina);
+            }
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что желаете удалить данный тест?\nВсе результаты учащихся будут обнулены!!", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                TestTableAdapter a = new TestTableAdapter();
+                a.DeleteQuery(ID_Test);
+                Controllers.fram_prep.Content = new Lenta(ID_Disciplina);
+            }
+        }
     }
 }

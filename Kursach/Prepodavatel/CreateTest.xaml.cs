@@ -51,6 +51,7 @@ namespace Kursach.Prepodavatel
             classes.SelectionChanged += Disciplins_SelectionChanged;
             classes.SelectedIndex = 0;
             rezhim_create.Text = "черновик (не сохранён)";
+            delete_btn.Visibility = Visibility.Hidden;
             ID_Tes = id_test;
             spisok_vopsov.ItemsSource = voprosi;
             if (ID_Tes != null)
@@ -59,6 +60,7 @@ namespace Kursach.Prepodavatel
                 DataBase.TEstTableDataTable b2 = new DataBase.TEstTableDataTable();
                 rezhim_create.Text = "черновик (сохранён)";
                 name_test.IsEnabled = false;
+                delete_btn.Visibility = Visibility.Visible;
                 classes.IsEnabled = false;
                 disciplins.IsEnabled = false;
                 btn_publish.Visibility = Visibility.Visible;
@@ -272,6 +274,7 @@ namespace Kursach.Prepodavatel
             grid2.Visibility = Visibility.Visible;
             grid3.Visibility = Visibility.Visible;
             rezhim_create.Text = "черновик (сохранён)";
+            delete_btn.Visibility = Visibility.Visible;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -539,6 +542,16 @@ namespace Kursach.Prepodavatel
                 TestTableAdapter a = new TestTableAdapter();
                 a.PublishTest(Controllers.DateTimeTest, true, DateTime.Now, Convert.ToInt32(ID_Tes));
                 MessageBox.Show("Тест опубликован студентам!");
+                Controllers.fram_prep.Content = new Lenta(ID_Dicp);
+            }
+        }
+
+        private void delete_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что желаете удалить данный черновик?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                TestTableAdapter a = new TestTableAdapter();
+                a.DeleteQuery(Convert.ToInt32(ID_Tes));
                 Controllers.fram_prep.Content = new Lenta(ID_Dicp);
             }
         }

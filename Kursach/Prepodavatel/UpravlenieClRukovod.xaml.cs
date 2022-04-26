@@ -112,5 +112,10 @@ namespace Kursach.Prepodavatel
             }
             catch {  }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Controllers.fram_prep.Content = new StudentsInfoPage();
+        }
     }
 }

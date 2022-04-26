@@ -100,6 +100,7 @@ namespace Kursach.Prepodavatel
                 t.Name_Test = b[i].Name_Test;
                 list_tests.Add(t);
             }
+            DataContext = list_tests;
             tests_Chernovik.ItemsSource = list_tests;
         }
 
@@ -231,6 +232,11 @@ namespace Kursach.Prepodavatel
         private void tests_Lenta_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Controllers.fram_prep.Content = new ResultTest(Convert.ToInt16(tests_Lenta.SelectedValue));
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Controllers.fram_prep.Content = new DupicateTest(ID_Disciplina);
         }
     }
 }

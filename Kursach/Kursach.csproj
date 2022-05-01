@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>ico_application.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,6 +33,10 @@
     <None Remove="Assets\uchenik.png" />
     <None Remove="Assets\uchgod.png" />
     <None Remove="DataBase.edmx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ico_application.ico" />
   </ItemGroup>
 
   <ItemGroup>

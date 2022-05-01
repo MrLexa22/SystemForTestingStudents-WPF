@@ -235,7 +235,7 @@ namespace Kursach.Admin
                     MessageBox.Show("Такой пользователь уже существует!");
                     return;
                 }
-                if (Convert.ToInt32(a.FindExistStudentEdit(email.Text.Trim(),Convert.ToInt16(id_user))) > 0)
+                if (Convert.ToInt32(a.FindExistStudentEdit(email.Text.Trim(),b2[0].ID_Student)) > 0)
                 {
                     MessageBox.Show("Такой пользователь уже существует!");
                     return;

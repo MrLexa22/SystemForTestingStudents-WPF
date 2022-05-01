@@ -174,6 +174,8 @@ namespace Kursach {
         
         private global::System.Data.DataRelation relationAnswers_StudenAnswer3;
         
+        private global::System.Data.DataRelation relationDisciplini_Test2;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1025,6 +1027,7 @@ namespace Kursach {
             this.relationAnswers_StudenAnswer2 = this.Relations["Answers_StudenAnswer2"];
             this.relationStudents_StudentAnswer1 = this.Relations["Students_StudentAnswer1"];
             this.relationAnswers_StudenAnswer3 = this.Relations["Answers_StudenAnswer3"];
+            this.relationDisciplini_Test2 = this.Relations["Disciplini_Test2"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1275,6 +1278,10 @@ namespace Kursach {
                         this.tableAnswersStudents.ID_AnswerColumn}, new global::System.Data.DataColumn[] {
                         this.tableStudentAnswer.Answer_IDColumn}, false);
             this.Relations.Add(this.relationAnswers_StudenAnswer3);
+            this.relationDisciplini_Test2 = new global::System.Data.DataRelation("Disciplini_Test2", new global::System.Data.DataColumn[] {
+                        this.tableDiscipliniTablePrepodavatel.ID_DisciplinaColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTest.Disciplini_IDColumn}, false);
+            this.Relations.Add(this.relationDisciplini_Test2);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7144,6 +7151,8 @@ namespace Kursach {
             
             private global::System.Data.DataColumn columnSNILS;
             
+            private global::System.Data.DataColumn columnEmail;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public StudentsTableDataTable() {
@@ -7339,6 +7348,14 @@ namespace Kursach {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn EmailColumn {
+                get {
+                    return this.columnEmail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7390,7 +7407,8 @@ namespace Kursach {
                         string Familia, 
                         string Ima, 
                         string Otchestvo, 
-                        string SNILS) {
+                        string SNILS, 
+                        string Email) {
                 StudentsTableRow rowStudentsTableRow = ((StudentsTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         FIO,
@@ -7412,7 +7430,8 @@ namespace Kursach {
                         Familia,
                         Ima,
                         Otchestvo,
-                        SNILS};
+                        SNILS,
+                        Email};
                 if ((parentParallelRowByParalleli_Classes2 != null)) {
                     columnValuesArray[8] = parentParallelRowByParalleli_Classes2[0];
                 }
@@ -7468,6 +7487,7 @@ namespace Kursach {
                 this.columnIma = base.Columns["Ima"];
                 this.columnOtchestvo = base.Columns["Otchestvo"];
                 this.columnSNILS = base.Columns["SNILS"];
+                this.columnEmail = base.Columns["Email"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7513,6 +7533,8 @@ namespace Kursach {
                 base.Columns.Add(this.columnOtchestvo);
                 this.columnSNILS = new global::System.Data.DataColumn("SNILS", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSNILS);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_Student,
                                 this.columnID_Class,
@@ -11202,6 +11224,22 @@ namespace Kursach {
             
             private global::System.Data.DataColumn columnNameCSV;
             
+            private global::System.Data.DataColumn columnFamilia;
+            
+            private global::System.Data.DataColumn columnIma;
+            
+            private global::System.Data.DataColumn columnLogin;
+            
+            private global::System.Data.DataColumn columnID_User;
+            
+            private global::System.Data.DataColumn columnID_Prepodavatel;
+            
+            private global::System.Data.DataColumn columnFIO;
+            
+            private global::System.Data.DataColumn columnPrepodavanie;
+            
+            private global::System.Data.DataColumn columnKLRukovod;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DiscipliniTablePrepodavatelDataTable() {
@@ -11341,6 +11379,70 @@ namespace Kursach {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FamiliaColumn {
+                get {
+                    return this.columnFamilia;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ImaColumn {
+                get {
+                    return this.columnIma;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn LoginColumn {
+                get {
+                    return this.columnLogin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ID_UserColumn {
+                get {
+                    return this.columnID_User;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn ID_PrepodavatelColumn {
+                get {
+                    return this.columnID_Prepodavatel;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn FIOColumn {
+                get {
+                    return this.columnFIO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PrepodavanieColumn {
+                get {
+                    return this.columnPrepodavanie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn KLRukovodColumn {
+                get {
+                    return this.columnKLRukovod;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -11376,7 +11478,27 @@ namespace Kursach {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DiscipliniTablePrepodavatelRow AddDiscipliniTablePrepodavatelRow(string NameDisciplina, PrepodavateliRow parentPrepodavateliRowByPrepodavateli_Disciplini6, ClassesRow parentClassesRowByClasses_Disciplini6, string ShortName, int ID_Class, string NameClass, int Parallel_ID, int ID_Parallel, int NomerParalleli, bool IsCourse, string NameClassParallel, string NameCSV) {
+            public DiscipliniTablePrepodavatelRow AddDiscipliniTablePrepodavatelRow(
+                        string NameDisciplina, 
+                        PrepodavateliRow parentPrepodavateliRowByPrepodavateli_Disciplini6, 
+                        ClassesRow parentClassesRowByClasses_Disciplini6, 
+                        string ShortName, 
+                        int ID_Class, 
+                        string NameClass, 
+                        int Parallel_ID, 
+                        int ID_Parallel, 
+                        int NomerParalleli, 
+                        bool IsCourse, 
+                        string NameClassParallel, 
+                        string NameCSV, 
+                        string Familia, 
+                        string Ima, 
+                        string Login, 
+                        int ID_User, 
+                        int ID_Prepodavatel, 
+                        string FIO, 
+                        string Prepodavanie, 
+                        string KLRukovod) {
                 DiscipliniTablePrepodavatelRow rowDiscipliniTablePrepodavatelRow = ((DiscipliniTablePrepodavatelRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -11391,7 +11513,15 @@ namespace Kursach {
                         NomerParalleli,
                         IsCourse,
                         NameClassParallel,
-                        NameCSV};
+                        NameCSV,
+                        Familia,
+                        Ima,
+                        Login,
+                        ID_User,
+                        ID_Prepodavatel,
+                        FIO,
+                        Prepodavanie,
+                        KLRukovod};
                 if ((parentPrepodavateliRowByPrepodavateli_Disciplini6 != null)) {
                     columnValuesArray[2] = parentPrepodavateliRowByPrepodavateli_Disciplini6[0];
                 }
@@ -11442,6 +11572,14 @@ namespace Kursach {
                 this.columnIsCourse = base.Columns["IsCourse"];
                 this.columnNameClassParallel = base.Columns["NameClassParallel"];
                 this.columnNameCSV = base.Columns["NameCSV"];
+                this.columnFamilia = base.Columns["Familia"];
+                this.columnIma = base.Columns["Ima"];
+                this.columnLogin = base.Columns["Login"];
+                this.columnID_User = base.Columns["ID_User"];
+                this.columnID_Prepodavatel = base.Columns["ID_Prepodavatel"];
+                this.columnFIO = base.Columns["FIO"];
+                this.columnPrepodavanie = base.Columns["Prepodavanie"];
+                this.columnKLRukovod = base.Columns["KLRukovod"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11473,6 +11611,22 @@ namespace Kursach {
                 base.Columns.Add(this.columnNameClassParallel);
                 this.columnNameCSV = new global::System.Data.DataColumn("NameCSV", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNameCSV);
+                this.columnFamilia = new global::System.Data.DataColumn("Familia", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFamilia);
+                this.columnIma = new global::System.Data.DataColumn("Ima", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIma);
+                this.columnLogin = new global::System.Data.DataColumn("Login", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLogin);
+                this.columnID_User = new global::System.Data.DataColumn("ID_User", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_User);
+                this.columnID_Prepodavatel = new global::System.Data.DataColumn("ID_Prepodavatel", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID_Prepodavatel);
+                this.columnFIO = new global::System.Data.DataColumn("FIO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIO);
+                this.columnPrepodavanie = new global::System.Data.DataColumn("Prepodavanie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrepodavanie);
+                this.columnKLRukovod = new global::System.Data.DataColumn("KLRukovod", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnKLRukovod);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID_Disciplina,
                                 this.columnID_Class,
@@ -11499,6 +11653,20 @@ namespace Kursach {
                 this.columnNameClassParallel.MaxLength = 28;
                 this.columnNameCSV.ReadOnly = true;
                 this.columnNameCSV.MaxLength = 24;
+                this.columnFamilia.AllowDBNull = false;
+                this.columnFamilia.MaxLength = 100;
+                this.columnIma.AllowDBNull = false;
+                this.columnIma.MaxLength = 100;
+                this.columnLogin.AllowDBNull = false;
+                this.columnLogin.MaxLength = 50;
+                this.columnID_User.AllowDBNull = false;
+                this.columnID_Prepodavatel.AllowDBNull = false;
+                this.columnFIO.ReadOnly = true;
+                this.columnFIO.MaxLength = 302;
+                this.columnPrepodavanie.ReadOnly = true;
+                this.columnPrepodavanie.MaxLength = 2147483647;
+                this.columnKLRukovod.ReadOnly = true;
+                this.columnKLRukovod.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -16485,6 +16653,22 @@ namespace Kursach {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Email {
+                get {
+                    try {
+                        return ((string)(this[this.tableStudentsTable.EmailColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Email\' в таблице \'StudentsTable\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableStudentsTable.EmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ParallelRow ParallelRow {
                 get {
                     return ((ParallelRow)(this.GetParentRow(this.Table.ParentRelations["Paralleli_Classes2"])));
@@ -16540,6 +16724,18 @@ namespace Kursach {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetOtchestvoNull() {
                 this[this.tableStudentsTable.OtchestvoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsEmailNull() {
+                return this.IsNull(this.tableStudentsTable.EmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetEmailNull() {
+                this[this.tableStudentsTable.EmailColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -18525,6 +18721,111 @@ namespace Kursach {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Familia {
+                get {
+                    return ((string)(this[this.tableDiscipliniTablePrepodavatel.FamiliaColumn]));
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.FamiliaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Ima {
+                get {
+                    return ((string)(this[this.tableDiscipliniTablePrepodavatel.ImaColumn]));
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.ImaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Login {
+                get {
+                    return ((string)(this[this.tableDiscipliniTablePrepodavatel.LoginColumn]));
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.LoginColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID_User {
+                get {
+                    return ((int)(this[this.tableDiscipliniTablePrepodavatel.ID_UserColumn]));
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.ID_UserColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int ID_Prepodavatel {
+                get {
+                    return ((int)(this[this.tableDiscipliniTablePrepodavatel.ID_PrepodavatelColumn]));
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.ID_PrepodavatelColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string FIO {
+                get {
+                    try {
+                        return ((string)(this[this.tableDiscipliniTablePrepodavatel.FIOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'FIO\' в таблице \'DiscipliniTablePrepodavatel\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.FIOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Prepodavanie {
+                get {
+                    try {
+                        return ((string)(this[this.tableDiscipliniTablePrepodavatel.PrepodavanieColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Prepodavanie\' в таблице \'DiscipliniTablePrepodavatel\' равно" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.PrepodavanieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string KLRukovod {
+                get {
+                    try {
+                        return ((string)(this[this.tableDiscipliniTablePrepodavatel.KLRukovodColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'KLRukovod\' в таблице \'DiscipliniTablePrepodavatel\' равно DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableDiscipliniTablePrepodavatel.KLRukovodColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public ClassesRow ClassesRow {
                 get {
                     return ((ClassesRow)(this.GetParentRow(this.Table.ParentRelations["Classes_Disciplini6"])));
@@ -18567,6 +18868,53 @@ namespace Kursach {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetNameCSVNull() {
                 this[this.tableDiscipliniTablePrepodavatel.NameCSVColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsFIONull() {
+                return this.IsNull(this.tableDiscipliniTablePrepodavatel.FIOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetFIONull() {
+                this[this.tableDiscipliniTablePrepodavatel.FIOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPrepodavanieNull() {
+                return this.IsNull(this.tableDiscipliniTablePrepodavatel.PrepodavanieColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPrepodavanieNull() {
+                this[this.tableDiscipliniTablePrepodavatel.PrepodavanieColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsKLRukovodNull() {
+                return this.IsNull(this.tableDiscipliniTablePrepodavatel.KLRukovodColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetKLRukovodNull() {
+                this[this.tableDiscipliniTablePrepodavatel.KLRukovodColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TestRow[] GetTestRows() {
+                if ((this.Table.ChildRelations["Disciplini_Test2"] == null)) {
+                    return new TestRow[0];
+                }
+                else {
+                    return ((TestRow[])(base.GetChildRows(this.Table.ChildRelations["Disciplini_Test2"])));
+                }
             }
         }
         
@@ -18679,6 +19027,17 @@ namespace Kursach {
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["Disciplini_Test"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DiscipliniTablePrepodavatelRow DiscipliniTablePrepodavatelRow {
+                get {
+                    return ((DiscipliniTablePrepodavatelRow)(this.GetParentRow(this.Table.ParentRelations["Disciplini_Test2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Disciplini_Test2"]);
                 }
             }
             
@@ -27781,7 +28140,7 @@ WHERE Parallel_ID = @Parallel_ID";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "Select CONCAT(Familia,\' \',Ima,\' \',Otchestvo) as FIO, *\r\nfrom Students\r\nJOIN Class" +
@@ -27790,12 +28149,31 @@ WHERE Parallel_ID = @Parallel_ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "Select CONCAT(Familia,\' \',Ima,\' \',Otchestvo) as FIO, *\r\nfrom Students\r\nJOIN Class" +
+            this._commandCollection[1].CommandText = @"Select CONCAT(Familia,' ',Ima,' ',Otchestvo) as FIO, *
+from Students
+JOIN Classes ON Classes.ID_Class = Class_ID
+JOIN Parallel ON Parallel.ID_Parallel = Parallel_ID
+JOIN Users ON User_ID = ID_User
+WHERE Students.Class_ID = @Class_ID AND ID_Student = @ID_Student
+ORDER BY Familia";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Class_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Student", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Student", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "Select CONCAT(Familia,\' \',Ima,\' \',Otchestvo) as FIO, *\r\nfrom Students\r\nJOIN Class" +
                 "es ON Classes.ID_Class = Class_ID\r\nJOIN Parallel ON Parallel.ID_Parallel = Paral" +
                 "lel_ID\r\nJOIN Users ON User_ID = ID_User\r\nWHERE Students.Class_ID = @Class_ID\r\nOR" +
                 "DER BY Familia";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Class_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Class_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "Select CONCAT(Familia,\' \',Ima,\' \',Otchestvo) as FIO, *\r\nfrom Students\r\nJOIN Class" +
+                "es ON Classes.ID_Class = Class_ID\r\nJOIN Parallel ON Parallel.ID_Parallel = Paral" +
+                "lel_ID\r\nJOIN Users ON User_ID = ID_User\r\nWHERE Login = @Login";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -27826,8 +28204,36 @@ WHERE Parallel_ID = @Parallel_ID";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByIDClass(DataBase.StudentsTableDataTable dataTable, int Class_ID) {
+        public virtual int FillBy22(DataBase.StudentsTableDataTable dataTable, int Class_ID, int ID_Student) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Class_ID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ID_Student));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataBase.StudentsTableDataTable GetDataBy2(int Class_ID, int ID_Student) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Class_ID));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ID_Student));
+            DataBase.StudentsTableDataTable dataTable = new DataBase.StudentsTableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByIDClass(DataBase.StudentsTableDataTable dataTable, int Class_ID) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Class_ID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -27841,8 +28247,44 @@ WHERE Parallel_ID = @Parallel_ID";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataBase.StudentsTableDataTable GetDataBy(int Class_ID) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Class_ID));
+            DataBase.StudentsTableDataTable dataTable = new DataBase.StudentsTableDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByLogin(DataBase.StudentsTableDataTable dataTable, string Login) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((Login == null)) {
+                throw new global::System.ArgumentNullException("Login");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Login));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataBase.StudentsTableDataTable GetDataBy1(string Login) {
+            this.Adapter.SelectCommand = this.CommandCollection[3];
+            if ((Login == null)) {
+                throw new global::System.ArgumentNullException("Login");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Login));
+            }
             DataBase.StudentsTableDataTable dataTable = new DataBase.StudentsTableDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -28279,7 +28721,7 @@ SELECT ID_Student, Class_ID, User_ID, Email, MobileZakPred FROM Students WHERE (
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_Student, Class_ID, User_ID, Email, MobileZakPred FROM dbo.Students";
@@ -28311,15 +28753,22 @@ SELECT ID_Student, Class_ID, User_ID, Email, MobileZakPred FROM Students WHERE (
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MobileZakPred", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "MobileZakPred", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "UPDATE [dbo].[Students] SET [Class_ID] = @Class_ID, [User_ID] = @User_ID, [Email]" +
-                " = @Email, [MobileZakPred] = @MobileZakPred WHERE [ID_Student] = @Original_ID_St" +
+            this._commandCollection[5].CommandText = "UPDATE [dbo].[Students] SET [Email] = @Email WHERE [ID_Student] = @Original_ID_St" +
                 "udent";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Class_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "User_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MobileZakPred", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "MobileZakPred", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Student", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Student", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "UPDATE [dbo].[Students] SET [Class_ID] = @Class_ID, [User_ID] = @User_ID, [Email]" +
+                " = @Email, [MobileZakPred] = @MobileZakPred WHERE [ID_Student] = @Original_ID_St" +
+                "udent";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Class_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@User_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "User_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.VarChar, 150, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MobileZakPred", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "MobileZakPred", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Student", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Student", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -28647,8 +29096,38 @@ SELECT ID_Student, Class_ID, User_ID, Email, MobileZakPred FROM Students WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateQuery(int Class_ID, int User_ID, string Email, string MobileZakPred, int Original_ID_Student) {
+        public virtual int UpdateEmail(string Email, int Original_ID_Student) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            if ((Email == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Email));
+            }
+            command.Parameters[1].Value = ((int)(Original_ID_Student));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQuery(int Class_ID, int User_ID, string Email, string MobileZakPred, int Original_ID_Student) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             command.Parameters[0].Value = ((int)(Class_ID));
             command.Parameters[1].Value = ((int)(User_ID));
             if ((Email == null)) {
@@ -30671,6 +31150,14 @@ Where IsCourse = 0
             tableMapping.ColumnMappings.Add("IsCourse", "IsCourse");
             tableMapping.ColumnMappings.Add("NameClassParallel", "NameClassParallel");
             tableMapping.ColumnMappings.Add("NameCSV", "NameCSV");
+            tableMapping.ColumnMappings.Add("Familia", "Familia");
+            tableMapping.ColumnMappings.Add("Ima", "Ima");
+            tableMapping.ColumnMappings.Add("Login", "Login");
+            tableMapping.ColumnMappings.Add("ID_User", "ID_User");
+            tableMapping.ColumnMappings.Add("ID_Prepodavatel", "ID_Prepodavatel");
+            tableMapping.ColumnMappings.Add("FIO", "FIO");
+            tableMapping.ColumnMappings.Add("Prepodavanie", "Prepodavanie");
+            tableMapping.ColumnMappings.Add("KLRukovod", "KLRukovod");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -30684,35 +31171,45 @@ Where IsCourse = 0
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT * From Disciplini\r\nJOIN TableClasses ON ID_Class = Class_ID\r\nWHERE Prepoda" +
-                "vatel_ID = @Prepodavatel_ID";
+            this._commandCollection[0].CommandText = "SELECT * From Disciplini\r\nJOIN TableClasses ON ID_Class = Class_ID\r\nJOIN TablePre" +
+                "podavatel ON TablePrepodavatel.ID_Prepodavatel = Prepodavatel_ID\r\nWHERE TableCla" +
+                "sses.ID_Class = @Class_ID";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prepodavatel_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Prepodavatel_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Class_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Class", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT * From Disciplini\r\nJOIN TableClasses ON ID_Class = Class_ID\r\nWHERE Prepoda" +
-                "vatel_ID = @Prepodavatel_ID AND ID_Disciplina != @ID_Disciplina";
+            this._commandCollection[1].CommandText = "SELECT * From Disciplini\r\nJOIN TableClasses ON ID_Class = Class_ID\r\nJOIN TablePre" +
+                "podavatel ON TablePrepodavatel.ID_Prepodavatel = Prepodavatel_ID\r\nWHERE Prepodav" +
+                "atel_ID = @Prepodavatel_ID";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prepodavatel_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Prepodavatel_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Disciplina", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Disciplina", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT * From Disciplini\r\nJOIN TableClasses ON ID_Class = Class_ID\r\nWHERE ID_Disc" +
-                "iplina = @ID_Disciplina";
+            this._commandCollection[2].CommandText = "SELECT * From Disciplini\r\nJOIN TableClasses ON ID_Class = Class_ID\r\nJOIN TablePre" +
+                "podavatel ON TablePrepodavatel.ID_Prepodavatel = Prepodavatel_ID\r\nWHERE Prepodav" +
+                "atel_ID = @Prepodavatel_ID AND ID_Disciplina != @ID_Disciplina";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prepodavatel_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Prepodavatel_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Disciplina", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Disciplina", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT * From Disciplini\r\nJOIN TableClasses ON ID_Class = Class_ID\r\nJOIN TablePre" +
+                "podavatel ON TablePrepodavatel.ID_Prepodavatel = Prepodavatel_ID\r\nWHERE ID_Disci" +
+                "plina = @ID_Disciplina";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_Disciplina", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Disciplina", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataBase.DiscipliniTablePrepodavatelDataTable dataTable, int Prepodavatel_ID) {
+        public virtual int FillByIdClass(DataBase.DiscipliniTablePrepodavatelDataTable dataTable, int Class_ID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Prepodavatel_ID));
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Class_ID));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -30724,8 +31221,34 @@ Where IsCourse = 0
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataBase.DiscipliniTablePrepodavatelDataTable GetData(int Prepodavatel_ID) {
+        public virtual DataBase.DiscipliniTablePrepodavatelDataTable GetData(int Class_ID) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Class_ID));
+            DataBase.DiscipliniTablePrepodavatelDataTable dataTable = new DataBase.DiscipliniTablePrepodavatelDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int Fill(DataBase.DiscipliniTablePrepodavatelDataTable dataTable, int Prepodavatel_ID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Prepodavatel_ID));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DataBase.DiscipliniTablePrepodavatelDataTable GetDataBy2(int Prepodavatel_ID) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Prepodavatel_ID));
             DataBase.DiscipliniTablePrepodavatelDataTable dataTable = new DataBase.DiscipliniTablePrepodavatelDataTable();
             this.Adapter.Fill(dataTable);
@@ -30737,7 +31260,7 @@ Where IsCourse = 0
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillBy(DataBase.DiscipliniTablePrepodavatelDataTable dataTable, int Prepodavatel_ID, int ID_Disciplina) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Prepodavatel_ID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ID_Disciplina));
             if ((this.ClearBeforeFill == true)) {
@@ -30752,7 +31275,7 @@ Where IsCourse = 0
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataBase.DiscipliniTablePrepodavatelDataTable GetDataBy1(int Prepodavatel_ID, int ID_Disciplina) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Prepodavatel_ID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(ID_Disciplina));
             DataBase.DiscipliniTablePrepodavatelDataTable dataTable = new DataBase.DiscipliniTablePrepodavatelDataTable();
@@ -30765,7 +31288,7 @@ Where IsCourse = 0
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByIDDiscipl(DataBase.DiscipliniTablePrepodavatelDataTable dataTable, int ID_Disciplina) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID_Disciplina));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -30779,7 +31302,7 @@ Where IsCourse = 0
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual DataBase.DiscipliniTablePrepodavatelDataTable GetDataBy(int ID_Disciplina) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(ID_Disciplina));
             DataBase.DiscipliniTablePrepodavatelDataTable dataTable = new DataBase.DiscipliniTablePrepodavatelDataTable();
             this.Adapter.Fill(dataTable);
@@ -32651,7 +33174,7 @@ SELECT ID_AnswerStudent, Student_ID, Answer_ID, TextAnswer, BallStudent FROM Stu
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID_AnswerStudent, Student_ID, Answer_ID, TextAnswer, BallStudent FROM dbo." +
@@ -32679,14 +33202,31 @@ SELECT ID_AnswerStudent, Student_ID, Answer_ID, TextAnswer, BallStudent FROM Stu
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Student_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE StudentAnswer SET [BallStudent] = @BallStudent FROM StudentAnswer \r\nJOIN A" +
+            this._commandCollection[4].CommandText = "SELECT COUNT(*) FROM StudentAnswer \r\nJOIN Answer ON Answer.ID_Answer = StudentAns" +
+                "wer.Answer_ID\r\nJOIN Vopros ON Vopros.ID_Vopros = Answer.Vopros_ID\r\nWHERE Test_ID" +
+                " = @Test_ID AND  Student_ID = @Student_ID";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Test_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Test_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Student_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[5].Connection = this.Connection;
+            this._commandCollection[5].CommandText = "INSERT INTO [dbo].[StudentAnswer] ([Student_ID], [Answer_ID], [TextAnswer], [Ball" +
+                "Student]) VALUES (@Student_ID, @Answer_ID, @TextAnswer, @BallStudent)";
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Student_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Answer_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Answer_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TextAnswer", global::System.Data.SqlDbType.VarChar, 250, global::System.Data.ParameterDirection.Input, 0, 0, "TextAnswer", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BallStudent", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BallStudent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "UPDATE StudentAnswer SET [BallStudent] = @BallStudent FROM StudentAnswer \r\nJOIN A" +
                 "nswer ON Answer.ID_Answer = StudentAnswer.Answer_ID\r\nJOIN Vopros ON Vopros.ID_Vo" +
                 "pros = Answer.Vopros_ID\r\nWHERE Vopros_ID = @Vopros_ID AND  Student_ID = @Student" +
                 "_ID";
-            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BallStudent", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BallStudent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vopros_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Vopros_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Student_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BallStudent", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BallStudent", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Vopros_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Vopros_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student_ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Student_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -33004,9 +33544,81 @@ SELECT ID_AnswerStudent, Student_ID, Answer_ID, TextAnswer, BallStudent FROM Stu
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> FindStudentsAsnwersExist(int Test_ID, int Student_ID) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            command.Parameters[0].Value = ((int)(Test_ID));
+            command.Parameters[1].Value = ((int)(Student_ID));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(int Student_ID, global::System.Nullable<int> Answer_ID, string TextAnswer, global::System.Nullable<int> BallStudent) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            command.Parameters[0].Value = ((int)(Student_ID));
+            if ((Answer_ID.HasValue == true)) {
+                command.Parameters[1].Value = ((int)(Answer_ID.Value));
+            }
+            else {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((TextAnswer == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(TextAnswer));
+            }
+            if ((BallStudent.HasValue == true)) {
+                command.Parameters[3].Value = ((int)(BallStudent.Value));
+            }
+            else {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateBallStudent(global::System.Nullable<int> BallStudent, int Vopros_ID, int Student_ID) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
             if ((BallStudent.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(BallStudent.Value));
             }

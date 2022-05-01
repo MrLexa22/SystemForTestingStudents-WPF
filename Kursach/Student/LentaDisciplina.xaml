@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="Kursach.Student.LentaDisciplina"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Kursach.Student" xmlns:local1="clr-namespace:Kursach.Prepodavatel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local1:DateTimeToDateConverter x:Key="myDateConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid>
+                <Image Source="pack://application:,,,/Assets/ShapkaCourse.png" Stretch="UniformToFill" Height="170" StretchDirection="Both"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 0 30 0">
+                        <Button Click="Lenta_Click" Name="Lentas" IsEnabled="False" FontFamily="Arial" FontSize="18" Cursor="Hand" Background="#c26401" Foreground="White" Margin="0 0 10 0" HorizontalAlignment="Center" BorderBrush="{x:Null}">Лента</Button>
+                        <Button Click="Results_Click" Name="Results" FontFamily="Arial" FontSize="18" Cursor="Hand" Background="#c26401" Foreground="White" Margin="0 0 10 0" HorizontalAlignment="Center" BorderBrush="{x:Null}">Результаты</Button>
+                    </StackPanel>
+                    <Button FontFamily="Arial" FontSize="18" Cursor="Hand" Background="#c26401" Foreground="White" Margin="10 0 0 0" HorizontalAlignment="Left" BorderBrush="{x:Null}" Click="Button_Click">Назад</Button>
+                    <Grid Grid.Row="1">
+                        <TextBlock Grid.Row="1" Name="Disciplina" FontFamily="Arial" FontWeight="Bold" FontSize="22" Text="Технология разработки программного обеспечения" HorizontalAlignment="Left" Width="580"  TextWrapping="Wrap" VerticalAlignment="Top" Margin="10" />
+                    </Grid>
+                    <TextBlock Grid.Row="2" Name="Group" FontFamily="Arial" FontSize="22" Text="3Б кл." HorizontalAlignment="Left" Width="580" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <ListView SelectionChanged="tests_Lenta_SelectionChanged" Grid.Row="1" Name="tests_Lenta" SelectedValuePath="ID_Test">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Margin" Value="15 5 15 5" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <ContentPresenter />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="1" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Cursor="Hand" BorderBrush="Black" BorderThickness="0.4" CornerRadius="10">
+                        <Border.Style>
+                            <Style>
+                                <Setter Property="Border.Background" Value="White"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Border.IsMouseOver" Value="True">
+                                        <Setter Property="Border.Background" Value="#feefe3" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Margin="10 0 0 0" Source="pack://application:,,,/Assets/TestLogo.png" Stretch="Uniform" Height="60"></Image>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock TextWrapping="Wrap" Grid.Row="0" Padding="10 10 0 0" FontFamily="Arial" FontWeight="Bold" FontSize="18" Text="{Binding Name_Test}" HorizontalAlignment="Stretch" VerticalAlignment="Top" />
+                                <TextBlock Grid.Row="1" Padding="10 2 0 0" TextWrapping="Wrap" FontFamily="Arial" FontSize="12" Text="{Binding WhenPublished, Converter={StaticResource myDateConverter}, StringFormat={}Дата публикации: {0}}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                                <TextBlock Grid.Row="2" Padding="10 2 0 0" FontFamily="Arial" FontSize="12" Text="{Binding SrokSdachi, Converter={StaticResource myDateConverter}, StringFormat={}Дата завершения: {0}}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                                <TextBlock Grid.Row="3" Padding="10 2 0 10" FontFamily="Arial" FontSize="12" Text="{Binding Status, StringFormat={}Статус: {0}}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <DataGrid FrozenColumnCount="1" Visibility="Hidden" HorizontalAlignment="Left" HeadersVisibility="Column" Grid.Row="2" IsReadOnly="True" Margin="10" CanUserAddRows="False" CanUserDeleteRows="False" SelectionUnit="FullRow" Name="data_grid" CanUserResizeRows="False" AutoGenerateColumns="True" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" GridLinesVisibility="None" Background="Transparent"  BorderBrush="{x:Null}">
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+            </DataGrid.Resources>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="FontFamily" Value="Arial"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Background" Value="#c2c2c2"/>
+                    <Setter Property="Padding" Value="8"/>
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+    </Grid>
+</UserControl>

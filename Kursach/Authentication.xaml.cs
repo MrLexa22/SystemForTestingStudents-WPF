@@ -1,5 +1,6 @@
 ﻿using Kursach.DataBaseTableAdapters;
 using Kursach.Prepodavatel;
+using Kursach.Student;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,28 +36,27 @@ namespace Kursach
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            /*            Controllers.auth_login = "admin"; //!!!
-                        Controllers.fram.Content = new AdminControl(); //!!!*/
-            Controllers.auth_login = "prepodavatel2"; //!!!
-            Controllers.fram.Content = new PrepodavatelControl(); //!!!
+            if (login.Text.Length == 0 || password.Password.Length == 0)
+            {
+                MessageBox.Show("Поля логин/пароль заполнены некорректно!");
+                return;
+            }
+            UsersTableAdapter a = new UsersTableAdapter();
+            DataBase.UsersDataTable b = new DataBase.UsersDataTable();
+            a.Authenticate(b, login.Text, password.Password);
+            if (b.Rows.Count <= 0)
+            {
+                MessageBox.Show("Авторизация не удалась!");
+                return;
+            }
 
-            /*            if (login.Text.Length == 0 || password.Password.Length == 0)
-                        {
-                            MessageBox.Show("Поля логин/пароль заполнены некорректно!");
-                            return;
-                        }
-                        UsersTableAdapter a = new UsersTableAdapter();
-                        DataBase.UsersDataTable b = new DataBase.UsersDataTable();
-                        a.Authenticate(b, login.Text, password.Password);
-                        if (b.Rows.Count <= 0)
-                        {
-                            MessageBox.Show("Авторизация не удалась!");
-                            return;
-                        }
-
-                        Controllers.auth_login = b[0].Login;
-                        if (b[0].Role == "A")
-                            Controllers.fram.Content = new AdminControl();*/
+            Controllers.auth_login = b[0].Login;
+            if (b[0].Role == "A")
+                Controllers.fram.Content = new AdminControl();
+            if (b[0].Role == "S")
+                Controllers.fram.Content = new StudentControl();
+            if (b[0].Role == "P")
+                Controllers.fram.Content = new PrepodavatelControl();
         }
     }
 }

@@ -133,6 +133,12 @@
     <Compile Update="Prepodavatel\UpravlenieAccountPrepod.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Student\ChangeEmailModalWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Student\UpravlenieAccountStudent.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -147,10 +153,14 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Student\" />
+    <Page Update="Student\ChangeEmailModalWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Student\UpravlenieAccountStudent.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

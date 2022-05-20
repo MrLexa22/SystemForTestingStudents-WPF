@@ -28,6 +28,8 @@ namespace Kursach.Student
         public int ID_Vopros;
         public int ID_Class;
         public int ID_Student;
+
+        public DateTime test_srok;
         public class ModelVoros_tip1 : INotifyPropertyChanged
         {
             private int _idanswer;
@@ -159,6 +161,7 @@ namespace Kursach.Student
             ID_Disciplina = b[0].ID_Disciplina;
             name_test.Text = b[0].Name_Test;
             srok_sdachi.Text = b[0].SrokSdachi.ToString("dd.MM.yyyy HH:mm");
+            test_srok = b[0].SrokSdachi;
 
             VoprosTableAdapter a1 = new VoprosTableAdapter();
             DataBase.VoprosDataTable b1 = new DataBase.VoprosDataTable();
@@ -298,6 +301,11 @@ namespace Kursach.Student
             {
                 if (!(MessageBox.Show("Вы уверены в правильности своих овтетов? При согласии ответы будут отправлены на проверку, изменить их будет нельзя!", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes))
                 {
+                    return;
+                }
+                if(DateTime.Now >= test_srok)
+                {
+                    MessageBox.Show("Срок выполнения тест завешён! Вы не успели выполнить тест в срок");
                     return;
                 }
                 ResultsTestTableAdapter at = new ResultsTestTableAdapter();

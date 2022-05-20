@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Kursach.Admin.ExportElements.ExportContingent">
+    <Position X="2.75" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Admin.ExportElements.ExportContingent.AllStudentsInfo">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ExportElements\ExportContingent.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Kursach.Admin.ExportElements.ExportContingent.StudentsAuth">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ExportElements\ExportContingent.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin\ExportElements\ExportContingent.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ExportElements.ExportPrepodavateli">
+    <Position X="16.25" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Admin.ExportElements.ExportPrepodavateli.PrepodavatelAuthen">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ExportElements\ExportPrepodavateli.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Kursach.Admin.ExportElements.ExportPrepodavateli.PrepodavatelAllDannie">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ExportElements\ExportPrepodavateli.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin\ExportElements\ExportPrepodavateli.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ImportElemetns.ImportErrors" BaseTypeListCollapsed="true">
+    <Position X="52" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Admin\ImportElemetns\ImportErrors.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursach.Admin.ImportElemetns.ImportKontingent">
+    <Position X="18.5" Y="9.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Kursach.Admin.ImportElemetns.ImportKontingent.CSVReadStudent" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ImportElemetns\ImportKontingent.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAgCAAAABAgAAAAAgAAEEAAJAAQAAAEBAKBAAAAA=</HashCode>
+      <FileName>Admin\ImportElemetns\ImportKontingent.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ImportElemetns.ImportPrepodavateli">
+    <Position X="5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Admin.ImportElemetns.ImportPrepodavateli.CSVReadPrepodavatel">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ImportElemetns\ImportPrepodavateli.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAgCAAAABAgAAAAAgAAEEAAJAAQAAAEAAKBAAAAA=</HashCode>
+      <FileName>Admin\ImportElemetns\ImportPrepodavateli.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ImportElemetns.CSVErrorsPrepodavat">
+    <Position X="52" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Admin\ImportElemetns\ImportPrepodavateli.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursach.Admin.AddEditAdministrator">
+    <Position X="7.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAABAAAAAAAAAAEEAAAAAAAAIAAACBAAAAA=</HashCode>
+      <FileName>Admin\AddEditAdministrator.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Windows.Controls.UserControl">
+    <Position X="43.25" Y="7" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Kursach.Admin.AddEditClassGroup">
+    <Position X="20.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAEAQAAEAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Admin\AddEditClassGroup.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.AddEditContingent">
+    <Position X="34.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAABAAAAAAAAAAEEAAAAgAAAIABACBAAAAA=</HashCode>
+      <FileName>Admin\AddEditContingent.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.AddEditCourseClass">
+    <Position X="59" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAARAAAAAEAAAAEAAIAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Admin\AddEditCourseClass.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.AddEditDisciplina">
+    <Position X="29.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAEAAQAAAAAA=</HashCode>
+      <FileName>Admin\AddEditDisciplina.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.AddEditPrepodavatel">
+    <Position X="61.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAACABAAAIAAAAAAEEAIAAgAAAIACACBAAAAA=</HashCode>
+      <FileName>Admin\AddEditPrepodavatel.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.Admin_prepodavateli">
+    <Position X="9.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAABAAAAAAAEEAAQAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Admin\Admin_prepodavateli.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.AdminControl">
+    <Position X="32" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQAAAAABABAAAAAAAAkEAAAAAAACAAAACAQAAAA=</HashCode>
+      <FileName>Admin\AdminControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.AdministratorsPage">
+    <Position X="25.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAABAAAAEAAEEAAAAAAAgAAAACAAAAAA=</HashCode>
+      <FileName>Admin\AdministratorsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ClassuGrupiPage">
+    <Position X="27.5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Admin.ClassuGrupiPage.ModelClassesGroups">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ClassuGrupiPage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Kursach.Admin.ClassuGrupiPage.ModelListClasses">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\ClassuGrupiPage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACAgAAAAABAAAAAAAAACEEBAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Admin\ClassuGrupiPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ContingentPage">
+    <Position X="41" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAABAAAAEAAEEAAAAAAAgAAAACAAAAAA=</HashCode>
+      <FileName>Admin\ContingentPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.DiscipliniPage">
+    <Position X="45.5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Admin.DiscipliniPage.PrepodavateliModel">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\DiscipliniPage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Kursach.Admin.DiscipliniPage.ClassesModel">
+        <TypeIdentifier>
+          <NewMemberFileName>Admin\DiscipliniPage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAABAAAAEAAEEAAAAAAAgAAAACAAAAAA=</HashCode>
+      <FileName>Admin\DiscipliniPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ExportPage">
+    <Position X="47.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Admin\ExportPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ImportPage">
+    <Position X="65.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Admin\ImportPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.ParalleliPage">
+    <Position X="23" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAABAAAAEAAEEAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Admin\ParalleliPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.PeriodsPage">
+    <Position X="11.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAEEAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Admin\PeriodsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.UpravlenieAccount">
+    <Position X="14" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAgAQAAAAAAAAA=</HashCode>
+      <FileName>Admin\UpravlenieAccount.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Windows.Controls.ContentControl">
+    <Position X="43.25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Models.UserModel">
+    <Position X="50.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAEACgAAAAABEAAAAAAAgAAAAAAgAAEAA=</HashCode>
+      <FileName>Models\UserModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursach.Prepodavatel.CreateTest">
+    <Position X="36.5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Prepodavatel.CreateTest.ModelVoros_tip1">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\CreateTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="Kursach.Prepodavatel.CreateTest.ModelListVoprosov">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\CreateTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ACACgAAACAADAJAAABEAAAEEAAABcIAAQQAACAAAAAA=</HashCode>
+      <FileName>Prepodavatel\CreateTest.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.DupicateTest">
+    <Position X="38.75" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Prepodavatel.DupicateTest.ModelDisciplin">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\DupicateTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAIABAAAAAAIAAAEAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Prepodavatel\DupicateTest.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.DateTimeToDateConverter" BaseTypeListCollapsed="true">
+    <Position X="53.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prepodavatel\Lenta.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.Lenta">
+    <Position X="43.25" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Prepodavatel.Lenta.Tests">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\Lenta.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQAAAQBIAAABBAABAAAAASEAAAAAAAAIgABAiAAAAAA=</HashCode>
+      <FileName>Prepodavatel\Lenta.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.PrepodavatelControl">
+    <Position X="52.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABCAAAAAAAAAEAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Prepodavatel\PrepodavatelControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.ResultTest">
+    <Position X="56.75" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Prepodavatel.ResultTest.Students">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\ResultTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Kursach.Prepodavatel.ResultTest.ModelVoros_tip1">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\ResultTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="Kursach.Prepodavatel.ResultTest.ModelListVoprosov">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\ResultTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAACoABQBAADAJAAABIAAAGEAAAAIIAAAQAACAACAAA=</HashCode>
+      <FileName>Prepodavatel\ResultTest.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.SrokSdachi" BaseTypeListCollapsed="true">
+    <Position X="46.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prepodavatel\SrokSdachi.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.StudentsInfoPage">
+    <Position X="63.5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Prepodavatel.StudentsInfoPage.StudentsInfo">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\StudentsInfoPage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prepodavatel\StudentsInfoPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Admin.UpravlenieAccountPrepod">
+    <Position X="68" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAgAQAAAAAAAAA=</HashCode>
+      <FileName>Prepodavatel\UpravlenieAccountPrepod.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.UpravlenieClRukovod">
+    <Position X="70.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prepodavatel\UpravlenieClRukovod.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Prepodavatel.UpravlenieTests">
+    <Position X="72.5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Prepodavatel.UpravlenieTests.CountModel">
+        <TypeIdentifier>
+          <NewMemberFileName>Prepodavatel\UpravlenieTests.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAAAAAgAAAAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Prepodavatel\UpravlenieTests.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Student.ChangeEmailModalWindow" BaseTypeListCollapsed="true">
+    <Position X="48.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAABAAAAAAAAAAEAAAAAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>Student\ChangeEmailModalWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursach.Student.LentaDisciplina">
+    <Position X="74.75" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Student.LentaDisciplina.Tests">
+        <TypeIdentifier>
+          <NewMemberFileName>Student\LentaDisciplina.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Kursach.Student.LentaDisciplina.DateTimeToDateConverter">
+        <TypeIdentifier>
+          <NewMemberFileName>Student\LentaDisciplina.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQAAAQBIAAAABAAAAAAAASEAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Student\LentaDisciplina.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Student.PassingTest">
+    <Position X="77" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Student.PassingTest.ModelVoros_tip1">
+        <TypeIdentifier>
+          <NewMemberFileName>Student\PassingTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+      <Class Name="Kursach.Student.PassingTest.ModelListVoprosov">
+        <TypeIdentifier>
+          <NewMemberFileName>Student\PassingTest.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgAJABAIAAIBAAAAAAAEAAQCAIAAAAQAABAAAAAA=</HashCode>
+      <FileName>Student\PassingTest.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Student.StudentControl">
+    <Position X="79.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Student\StudentControl.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Student.StudentListDisciplins">
+    <Position X="81.5" Y="9.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.Student.StudentListDisciplins.CountModel">
+        <TypeIdentifier>
+          <NewMemberFileName>Student\StudentListDisciplins.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAIAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Student\StudentListDisciplins.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.Student.UpravlenieAccountStudent">
+    <Position X="83.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAIAAAABAAAAABAAAAEAAAAAAAAgAQAACAAAAAA=</HashCode>
+      <FileName>Student\UpravlenieAccountStudent.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.App">
+    <Position X="46.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursach.Authentication">
+    <Position X="50" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authentication.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.ChangePasswordModalWindow" BaseTypeListCollapsed="true">
+    <Position X="53.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAMAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ChangePasswordModalWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursach.ForgotPassword">
+    <Position X="54.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAABAAAAAAAAAAEAIAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ForgotPassword.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Kursach.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="50.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Kursach.Controllers">
+    <Position X="52" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAIAAAAAAAAAAAAAIAAIAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Kursach.TranslitMethods">
+    <Position X="48.5" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Kursach.TranslitMethods.Translitter">
+        <TypeIdentifier>
+          <NewMemberFileName>TransliterationType.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="Kursach.TranslitMethods.TranslitType">
+        <TypeIdentifier>
+          <NewMemberFileName>TransliterationType.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="Kursach.TranslitMethods.TranslitSymbol">
+        <TypeIdentifier>
+          <NewMemberFileName>TransliterationType.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TransliterationType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

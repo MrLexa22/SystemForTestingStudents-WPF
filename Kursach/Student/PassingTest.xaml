@@ -220,7 +220,7 @@
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                                 </Grid.ColumnDefinitions>
-                                                <TextBox HorizontalAlignment="Stretch" materialDesign:HintAssist.Hint="Введите ответ на вопрос" FontFamily="Arial" FontSize="16" Text="{Binding NameVopros, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBox MaxLength="30" HorizontalAlignment="Stretch" materialDesign:HintAssist.Hint="Введите ответ на вопрос" FontFamily="Arial" FontSize="16" Text="{Binding NameVopros, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                             </Grid>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
@@ -228,13 +228,6 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
-                    <!--<Grid  Grid.Column="1" Name="grid_tip_3" Visibility="Hidden">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                            <RowDefinition Height="Auto"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <TextBox materialDesign:HintAssist.Hint="Введите ответ на вопрос" FontFamily="Arial" FontSize="16" Grid.Row="1" Margin="20" MaxWidth="500" VerticalAlignment="Top" ></TextBox>
-                    </Grid>-->
                 </Grid>
                 <Grid Grid.Row="2" Margin="0 0 0 10">
                     <Grid.ColumnDefinitions>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursach"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
-        Title="Изменение пароля" Height="300" Width="340">
+        Title="Изменение Email" Height="300" Width="340">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

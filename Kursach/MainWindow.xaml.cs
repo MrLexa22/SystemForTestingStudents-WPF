@@ -24,15 +24,8 @@ namespace Kursach
         public MainWindow()
         {
             InitializeComponent();
-
-            //string val = "Иванов Иван Иванович";
-            //TranslitMethods.Translitter trn = new TranslitMethods.Translitter();
-            //MessageBox.Show("ГОСТ: " + trn.Translit(val, TranslitMethods.TranslitType.Gost));
-            //MessageBox.Show("ISO: " + trn.Translit(val, TranslitMethods.TranslitType.Iso));
-
             Controllers.fram = control;
             Controllers.fram.Content = new Authentication();
-            //control.Content = new AdminControl();
             Controllers.ClearUsers();
         }
     }

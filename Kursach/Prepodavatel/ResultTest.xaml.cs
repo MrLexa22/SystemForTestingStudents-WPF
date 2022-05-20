@@ -404,6 +404,10 @@ namespace Kursach.Prepodavatel
             DataBase.AnswerDataTable b1 = new DataBase.AnswerDataTable();
             a1.FillByIDVopros(b1, b[0].ID_Vopros);
 
+            int max_balls = 0;
+            max_balls = b[0].Ball;
+            max_ball.Text = max_balls.ToString();
+
             TypeVopros(Convert.ToInt16(b[0].TypeVopros));
 
             if (Convert.ToInt16(b[0].TypeVopros) == 0 || Convert.ToInt16(b[0].TypeVopros) == 1)
